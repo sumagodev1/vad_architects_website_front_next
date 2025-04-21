@@ -1,0 +1,41 @@
+@media (min-width: 768px) {
+  .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -1rem;
+  }
+}
+
+
+.nav-item-custom {
+  position: relative;
+  display: inline-block; /* text width only */
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.nav-item-custom::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; /* distance below text */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-item-custom:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-item-custom.active {
+  font-weight: bold;
+}
+
+.nav-item-custom.active::after {
+  transform: scaleX(1);
+}

@@ -1,0 +1,36 @@
+.vertical-line {
+    width: 2px;
+    height: 100%;
+    background-color: #ccc;
+  }
+
+  .border-right-project-details{
+    border-right: 1px solid #000;
+  }
+
+  .horizontal-gallery-wrapper {
+    scroll-snap-type: x mandatory;
+  }
+  
+  .horizontal-gallery-wrapper img {
+    scroll-snap-align: start;
+  }
+
+  
+  /* testi */
+  .testimonial-section {
+    background-color: #fff;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonial-section {
+      padding: 2rem 1rem;
+    }
+  
+    .testimonial-section .bg-dark {
+      align-items: center !important;
+      text-align: center;
+    }
+  }
+  

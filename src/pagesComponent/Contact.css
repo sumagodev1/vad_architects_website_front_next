@@ -1,0 +1,136 @@
+.contact-section {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .contact-section h2 span {
+    color: #ffffff;
+  }
+  
+  .contact-section img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .text-muted {
+    color: #ccc !important;
+  }
+  
+  .contact-grid .small {
+    color: #ccc;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-grid {
+      text-align: center;
+    }
+  
+    .contact-grid .d-flex {
+      flex-direction: column;
+      align-items: center !important;
+    }
+  
+    .contact-grid .d-flex .me-2 {
+      margin-right: 0 !important;
+      margin-bottom: 10px;
+    }
+  }
+  
+
+
+
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .contact-icon {
+    min-width: 20px;
+    margin-right: 10px;
+    color: #fff;
+    margin-top: 4px;
+  }
+  
+  .contact-label {
+    width: 90px; /* Fixed width for alignment */
+    font-weight: 600;
+    color: #fff;
+  }
+  
+  .contact-detail {
+    flex: 1;
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .contact-label {
+      width: auto;
+      /* margin-bottom: 5px; */
+    }
+  
+    /* .contact-detail {
+      padding-left: 30px;
+    } */
+  }
+  
+
+  /* contact us form */
+
+  .card {
+    background-color: #fff;
+  }
+  
+  input::placeholder,
+  textarea::placeholder {
+    color: #999;
+    font-size: 0.95rem;
+  }
+  
+  form .form-control {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  form .btn-dark {
+    border-radius: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .custom-width-desktop {
+      width: 35% !important;
+    }
+  }  
+  
+
+  /* above form */
+  .black-color-div{
+    padding: 11.5rem;
+    background-color: #F2F2F2;
+  }
+
+  /* @media (max-width: 768px) {
+    .black-color-div {
+        background-color: unset;
+    }
+  } */
+
+  .contact-position{
+    position: relative;
+    /* top: -23rem; */
+    margin-top: -23rem;
+  }
