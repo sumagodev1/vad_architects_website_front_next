@@ -10,6 +10,10 @@ const Navbar = () => {
 
   const location = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const isActive = (path) => location.pathname === path;
 
   const [categories, setCategories] = useState([]);

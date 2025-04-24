@@ -51,7 +51,7 @@ const Ourprocess = () => {
                         <div className="step-circle flex-shrink-0 me-3">{step.number}</div>
                         <div>
                         <div className="step-title fw-bold text-uppercase mb-1">{step.title}</div>
-                        <div className="step-text small text-muted text-justify">{step.text}</div>
+                        <div className="step-text small text-justify">{step.text}</div>
                         </div>
                     </div>
                 </div>

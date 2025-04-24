@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import team1 from './images/about/Team1.webp';
 import team2 from './images/about/Team2.webp';
 import team3 from './images/about/Team3.webp';
@@ -7,22 +8,44 @@ import './About.css';
 const teamMembers = [
   {
     name: 'Snehal Mutalik',
-    role: 'Interior designer',
+    designation: 'Interior designer',
     img: team1,
   },
   {
     name: 'Hitesh Shinde',
-    role: 'Architect',
+    designation: 'Architect',
     img: team2,
   },
   {
     name: 'Nilesh Sonawane',
-    role: 'SENIOR Architect',
+    designation: 'SENIOR Architect',
     img: team3,
   },
 ];
 
 const Team = () => {
+
+  const [teamMembers, setTeamMembers] = useState([]);
+
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        const response = await axios.get('/team/get-teammembers');
+        if (response.data.responseData && Array.isArray(response.data.responseData)) {
+          const filteredMembers = response.data.responseData
+            .filter((member) => member.isActive === true)
+            .sort((a, b) => a.position_no - b.position_no);
+
+          setTeamMembers(filteredMembers);
+        }
+      } catch (error) {
+        console.error('Error fetching team members:', error);
+      }
+    };
+
+    fetchTeamMembers();
+  }, []);
+
   return (
     <>
 
@@ -37,7 +60,7 @@ const Team = () => {
               <img src={member.img} className="card-img-top" alt={member.name} />
               <div className="card-body">
                 <h5 className="card-title fw-bold">{member.name}</h5>
-                <p className="card-text">{member.role}</p>
+                <p className="card-text">{member.designation}</p>
               </div>
             </div>
           </div>

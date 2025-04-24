@@ -92,7 +92,7 @@ const Footer = () => {
           <div className="col-lg-3 col-md-4 col-sm-6">
             <h6 className="fw-bold mb-4">Contact us</h6>
             <div className="small mb-2 d-flex">
-                <FaMapMarkerAlt className="me-2 mt-1" style={{ fontSize: '2rem' }} />
+                <FaMapMarkerAlt className="me-2" style={{ fontSize: '2rem', marginTop:'-0.2rem' }} />
                 <span className="text-justify">
                     602, Ganesh Gunjan Apartment, Lawate Nagar Lane No. 2, Near City Centre Mall, Untwadi, Nashik 422007
                 </span>
