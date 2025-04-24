@@ -7,7 +7,7 @@ import Footer from '../layoutComponent/Footer';
 import banner from './images/banner.mp4';
 import contactpage from './images/contactpage.webp';
 import './Contact.css';
-import { FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaClock, FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaClock, FaFacebookF, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
 
 const Contact = () => {
 
@@ -288,7 +288,7 @@ const Contact = () => {
                     {/* Right Column */}
                     <div className="col-lg-4 col-md-12">
                         <div className="contact-item d-flex align-items-center mb-3">
-                        <FaWhatsapp className="contact-icon" />
+                        <FaPhoneAlt className="contact-icon" />
                         <span className="contact-label">Phone no.</span>
                         <span className="contact-detail">+91 96991 56892</span>
                         </div>
