@@ -33,8 +33,8 @@ const Project = () => {
   
 
   return (
-    <div className="project-section container">
-      <h2 className="project-title mb-5">Our Featured <strong>Projects</strong></h2>
+    <div className="project-section container" id="projects">
+      <h2 className="project-title mb-3 mt-1">Our Featured <strong>Projects</strong></h2>
       <div className="row g-0">
         <div className="col-12 col-md-6 mb-4">
           <div className="project-card">

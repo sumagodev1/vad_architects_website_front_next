@@ -73,7 +73,7 @@ const Navbar = () => {
             </div>
             <div className="col-md-3 col-lg-2">
             <Link className="nav-link text-white" to="/about">
-              <span className={`nav-item-custom ${isActive("/about") ? "active" : ""}`}>ABOUT US</span>
+              <span className={`nav-item-custom ${isActive("/about") ? "active" : ""}`}>WHO WE ARE</span>
             </Link>
             </div>
 
@@ -101,7 +101,7 @@ const Navbar = () => {
                 } : {})}
                 style={{ cursor: "pointer" }}
               >
-                PROJECTS <FaChevronDown style={{ color: 'white', fontSize: '0.8rem', marginLeft: '5px' }} />
+                OUR WORK <FaChevronDown style={{ color: 'white', fontSize: '0.8rem', marginLeft: '5px' }} />
               </span>
 
               {/* Desktop Dropdown */}
@@ -132,7 +132,7 @@ const Navbar = () => {
             </div>
             <div className="col-md-3 col-lg-2">
               <Link className="nav-link text-white" to="/contact">
-                <span className={`nav-item-custom ${isActive("/contact") ? "active" : ""}`}>CONTACT US</span>
+                <span className={`nav-item-custom ${isActive("/contact") ? "active" : ""}`}>REACH US</span>
               </Link>
             </div>
 

@@ -73,8 +73,8 @@ const Footer = () => {
             <h6 className="fw-bold mb-4">Company</h6>
             <ul className="list-unstyled">
               <li className="mb-2"><Link to="/" className="text-white text-decoration-none">Home</Link></li>
-              <li className="mb-2"><Link to="/about" className="text-white text-decoration-none">About us</Link></li>
-              <li className="mb-2"><Link to="/projects" className="text-white text-decoration-none">Projects</Link></li>
+              <li className="mb-2"><Link to="/about" className="text-white text-decoration-none">Who We Are</Link></li>
+              <li className="mb-2"><Link to="/#projects" className="text-white text-decoration-none">Our Work</Link></li>
             </ul>
           </div>
 
@@ -84,7 +84,7 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li className="mb-2"><Link to="/#services" className="text-white text-decoration-none">Services</Link></li>
               <li className="mb-2"><Link to="/career" className="text-white text-decoration-none">Career</Link></li>
-              <li className="mb-2"><Link to="/contact" className="text-white text-decoration-none">Contact us</Link></li>
+              <li className="mb-2"><Link to="/contact" className="text-white text-decoration-none">Reach Us</Link></li>
             </ul>
           </div>
 

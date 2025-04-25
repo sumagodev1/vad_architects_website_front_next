@@ -174,11 +174,16 @@ const ProjectsPage = () => {
 //   ];
 
 useEffect(() => {
-  const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  tooltipTriggerList.forEach((tooltipTriggerEl) => {
-    new window.bootstrap.Tooltip(tooltipTriggerEl);
-  });
+  setTimeout(() => {
+    if (window.bootstrap) {
+      const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.forEach((tooltipTriggerEl) => {
+        new window.bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    }
+  }, 100); // delay tooltip init
 }, [projectsData]);
+
 
   return (
     <>
