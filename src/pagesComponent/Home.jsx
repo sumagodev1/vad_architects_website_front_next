@@ -74,14 +74,15 @@ const Home = () => {
         setHomeslider([...desktopSlides, ...mobileSlides]);
         // setLoading(false); 
               // Ensure minimum loader time of 3 seconds
-        const elapsed = Date.now() - start;
-        const remaining = MIN_LOADER_TIME - elapsed;
+        // const elapsed = Date.now() - start;
+        // const remaining = MIN_LOADER_TIME - elapsed;
 
-        if (remaining > 0) {
-            setTimeout(() => setLoading(false), remaining);
-        } else {
-            setLoading(false);
-        }
+        // if (remaining > 0) {
+        //     setTimeout(() => setLoading(false), remaining);
+        // } else {
+        //     setLoading(false);
+        // }
+        setLoading(false);
       } catch (err) {
         console.error("There was an error fetching the data!", err);
         setHomeslider([]);
@@ -124,6 +125,14 @@ const Home = () => {
     fetchSocialLinks();
   }, []);
 
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  const handleVideoLoaded = () => {
+    setVideoLoaded(true);
+    setLoading(false);
+  };  
+
+
   if (loading) {
     return (
       <div
@@ -151,8 +160,8 @@ const Home = () => {
 
             {/* Desktop Video */}
             {desktopVideo && (
-            <div className="d-none d-md-block">
-                <video className="w-100" autoPlay loop muted playsInline>
+            <div className="d-none d-md-block career-banner-video-wrapper">
+                <video className="w-100 career-banner-video" autoPlay loop muted playsInline onLoadedData={handleVideoLoaded}>
                 <source src={desktopVideo} type="video/mp4" />
                 {/* <source src="https://vadarchitects.com/13112233_3840_2160_60fps.mp4" type="video/mp4" /> */}
                 Your browser does not support the video tag.
@@ -163,7 +172,7 @@ const Home = () => {
             {/* Mobile Video */}
             {mobileVideo && (
             <div className="d-block d-md-none">
-                <video className="w-100" autoPlay loop muted playsInline>
+                <video className="w-100" autoPlay loop muted playsInline onLoadedData={handleVideoLoaded}>
                 <source src={mobileVideo} type="video/mp4" />
                 Your browser does not support the video tag.
                 </video>
@@ -171,12 +180,12 @@ const Home = () => {
             )}
         </div>
 
-        <div className="container my-5">
+        <div className="container my-5 discover_container">
             <div className="row align-items-center section-bg-color">
                 {/* Left Text */}
                 <div className="col-md-6 mb-4 mb-md-0 p-4">
                     <h2 className="fw-bold display-6">Discover</h2>
-                    <h3 className="text-muted">Our Firm</h3>
+                    <h3 className="">Our Firm</h3>
                     <p className="text-secondary text-justify">
                         Viraj Daspute is a visionary architect with over 15 years of experience in designing sustainable and innovative buildings. He founded V.A.D Architects Studio in 2010, with a mission to create spaces that inspire and uplift communities.
                     </p>
@@ -296,7 +305,7 @@ const Home = () => {
         </div>
 
         <section className="social-media-section text-center">
-            <h4 className="mb-3 fw-bold">Follow Us On</h4>
+            <h3 className="mb-3 fw-bold">Follow Us On</h3>
             <div className="d-flex justify-content-center gap-3">
             <a
                 href={socialLinks.facebook}

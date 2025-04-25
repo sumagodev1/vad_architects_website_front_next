@@ -419,7 +419,7 @@ const Contact = () => {
         </div>
 
         <section className="social-media-section text-center">
-            <h4 className="mb-3 fw-bold">Follow Us On</h4>
+            <h3 className="mb-3 fw-bold">Follow Us On</h3>
             <div className="d-flex justify-content-center gap-3">
             <a
                 href={socialLinks.facebook}

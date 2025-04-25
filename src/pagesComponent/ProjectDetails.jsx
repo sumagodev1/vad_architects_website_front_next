@@ -188,7 +188,7 @@ useEffect(() => {
       <div className="row mb-5">
         <div className="col-12">
           <img
-            src={projectdetails1}
+            src={`${axios.defaults.baseURL}${project?.hero_img}`}
             alt="Modern Kitchen"
             className="img-fluid rounded shadow-sm"
           />
@@ -331,7 +331,7 @@ useEffect(() => {
 
 
         <section className="social-media-section text-center">
-            <h4 className="mb-3 fw-bold">Follow Us On</h4>
+            <h3 className="mb-3 fw-bold">Follow Us On</h3>
             <div className="d-flex justify-content-center gap-3">
             <a
                 href={socialLinks.facebook}

@@ -33,6 +33,12 @@
     margin-bottom: 0.2rem;
 }
 
+@media (max-width: 765px) {
+  .discover_container {
+    margin-top: 0.1rem !important;
+  }
+}
+
 /* Principal */
 .timeline {
     position: relative;
@@ -111,7 +117,7 @@
   }
   
   .project-title {
-    font-size: 2rem;
+    font-size: 3.1rem;
   }
   
   .project-card {
@@ -132,19 +138,21 @@
   }
   
   .project-details {
-    padding: 20px;
+    padding: 8px;
     text-align: left;
     flex-grow: 1;
   }
   
   .project-location {
-    font-size: 0.9rem;
-    color: #666;
+    /* font-size: 0.9rem;
+    color: #666; */
+    font-size: 24px;
+    color: #000000c2;
     margin-bottom: 5px;
   }
   
   .project-name {
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     margin-bottom: 10px;
   }
   

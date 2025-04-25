@@ -1,109 +1,109 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Home.css'; 
-import project1 from './images/home/ProjectFrame1.webp';
-import project2 from './images/home/ProjectFrame2.webp';
+import './Home.css';
 import { useNavigate } from 'react-router-dom';
 
 const Project = () => {
+  const navigate = useNavigate();
+  const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-    const navigate = useNavigate();
-    const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const fetchProjectsAndCategories = async () => {
+      try {
+        const [projectRes, categoryRes] = await Promise.all([
+          axios.get("projectDetails/get-projectDetails"),
+          axios.get("category/get-category"),
+        ]);
 
-    useEffect(() => {
-      const fetchCategories = async () => {
-        try {
-          const res = await axios.get("category/get-category");
-          if (res.data?.responseData) {
-            setCategories(res.data.responseData);
-          }
-        } catch (err) {
-          console.error("Failed to load categories:", err);
-        }
-      };
-  
-      fetchCategories();
-    }, []);
-  
-    const handleClick = () => {
-      if (categories.length > 0) {
-        navigate(`/project/${categories[0].title}`);
+        const allProjects = projectRes.data.responseData || [];
+        const featured = allProjects.filter(project => project.is_feature_project);
+
+        setFeaturedProjects(featured);
+        setCategories(categoryRes.data.responseData || []);
+      } catch (err) {
+        console.error("Error loading data:", err);
       }
     };
-  
+
+    fetchProjectsAndCategories();
+  }, []);
+
+  const handleArrowClick = (project) => {
+    const category = categories.find(cat => cat.id === project.project_category_id);
+    const categoryTitle = category?.title || "unknown";
+
+    navigate(`/projectdetails/${categoryTitle}/${project.project_name.toLowerCase().replace(/\s+/g, "-")}`, {
+      state: {
+        project_location: project.project_location,
+        project_year_of_completion: project.project_year_of_completion,
+        project_name: project.project_name,
+        id: project.id,
+      },
+    });
+  };
+
+  const handleViewAllClick = () => {
+    if (categories.length > 0) {
+      navigate(`/project/${categories[0].title}`);
+    }
+  };
 
   return (
     <div className="project-section container" id="projects">
-      <h2 className="project-title mb-3 mt-1">Our Featured <strong>Projects</strong></h2>
+      <h1 className="project-title mb-3 mt-1 ms-md-3">Our Featured <strong>Projects</strong></h1>
       <div className="row g-0">
-        <div className="col-12 col-md-6 mb-4">
-          <div className="project-card">
-            <img
-              src={project1}
-              alt="Blue House"
-              className="project-image"
-            />
-            <div className="project-details">
-              <p className="project-location">Pune, Maharashtra</p>
+        {/* .slice(0, 2) */}
+        {featuredProjects.map((project, idx) => (
+          <div className="col-12 col-md-6 mb-4" key={project.id}>
+            <div className="project-card">
+              <img
+                src={project.img}
+                alt={project.project_name}
+                className="project-image projectpage_img"
+              />
+              <div className="project-details">
+                <p className="project-location mt-3">{project.project_location}</p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <h3 className="project-name" style={{ margin: 0, color:'#666' }}><strong>The Blue House</strong></h3>
-                    <div
-                        className="rounded-circle"
-                        style={{
-                            width: '40px',
-                            height: '40px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: '#1D1D1D80',
-                            cursor: 'pointer',
-                            marginLeft: '10px'
-                        }}
-                        >
-                        <span style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-12 col-md-6 mb-4">
-          <div className="project-card">
-            <img
-              src={project2}
-              alt="Shah Duplex"
-              className="project-image"
-            />
-            <div className="project-details">
-              <p className="project-location">Mumbai, Maharashtra</p>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <h3 className="project-name" style={{ margin: 0, color:'#666' }}><strong>Shah Duplex</strong></h3>
-                    <div
-                        className="rounded-circle"
-                        style={{
-                            width: '40px',
-                            height: '40px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: '#1D1D1D80',
-                            cursor: 'pointer',
-                            marginLeft: '10px'
-                        }}
-                        >
-                        <span style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-12">
-            <div className='me-3' style={{ display: 'flex', alignItems: 'center', justifyContent:'end' }}>
-                <h3 className="project-name" style={{ margin: 0 }}><strong>View All</strong></h3>
-                <div className="rounded-circle circle-btn-black" onClick={handleClick} style={{ cursor: categories.length > 0 ? 'pointer' : 'not-allowed' }}>
+                  <h1 className="project-name" style={{ margin: 0, color: '#666' }}>
+                    <strong data-bs-toggle="tooltip" data-bs-placement="top" title={project.project_name}>{project.project_name.length > 15
+                    ? project.project_name.slice(0, 15) + "..."
+                    : project.project_name}
+                    </strong>
+                  </h1>
+                  <div
+                    className="rounded-circle"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: '#1D1D1D80',
+                      cursor: 'pointer',
+                      marginLeft: '10px'
+                    }}
+                    onClick={() => handleArrowClick(project)}
+                  >
                     <span style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        ))}
+
+        <div className="col-12">
+          <div className='me-3' style={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
+            <h3 className="project-name" style={{ margin: 0 }}><strong>View All</strong></h3>
+            <div
+              className="rounded-circle circle-btn-black"
+              onClick={handleViewAllClick}
+              style={{ cursor: categories.length > 0 ? 'pointer' : 'not-allowed' }}
+            >
+              <span style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

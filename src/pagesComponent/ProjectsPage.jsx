@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
+import { FaFacebookF, FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from '../layoutComponent/Navbar';
@@ -52,6 +53,13 @@ const CardInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   position: relative;
+
+  @media (max-width: 768px) {
+    left: 0;
+    max-width: 100%;
+    bottom: 2rem;
+  }
+
 `;
 
 const Location = styled.p`
@@ -101,6 +109,32 @@ const ArrowIcon = styled.div`
 `;
 
 const ProjectsPage = () => {
+
+    const [socialLinks, setSocialLinks] = useState({});
+
+    useEffect(() => {
+        const fetchSocialLinks = async () => {
+            try {
+            const response = await axios.get("/social-contact/get-socialcontacts");
+            const links = response.data.responseData;
+        
+            // Transform the array into an object like { facebook: '...', instagram: '...' }
+            const formattedLinks = {};
+            links.forEach((item) => {
+                if (!item.isDelete && item.isActive) {
+                const name = item.name.toLowerCase().replace(/\s+/g, '');
+                formattedLinks[name] = item.url;
+                }
+            });
+        
+            setSocialLinks(formattedLinks);
+            } catch (err) {
+            console.error("Error fetching social media links:", err);
+            }
+        };
+        
+        fetchSocialLinks();
+    }, []);
 
     const navigate = useNavigate();
 
@@ -217,12 +251,12 @@ useEffect(() => {
                 data-bs-placement="top"
                 title={project.project_name}
               >
-                {project.project_name.length > 14
-                  ? project.project_name.slice(0, 14) + "..."
+                {project.project_name.length > 15
+                  ? project.project_name.slice(0, 15) + "..."
                   : project.project_name}
               </Title>
               <TitleUnderline />
-              <Subtitle>Explore Our Most Recent Project</Subtitle>
+              <Subtitle>{project.project_info}</Subtitle>
               {/* <ArrowIcon>→</ArrowIcon> */}
               {/* <ArrowIcon onClick={() => navigate(`/projectdetails/${project.id}`)}>→</ArrowIcon> */}
               {/* <ArrowIcon onClick={() => navigate(`/projectdetails/${categoryTitle}/${project.id}`)}>→</ArrowIcon> */}
@@ -254,6 +288,51 @@ useEffect(() => {
         )}
       </Grid>
     </div>
+
+    <section className="social-media-section text-center">
+          <h3 className="mb-3 fw-bold">Follow Us On</h3>
+          <div className="d-flex justify-content-center gap-3">
+          <a
+              href={socialLinks.facebook}
+              className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle gallery_social_logo_shadow"
+              style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
+          >
+              <FaFacebookF style={{ height: "1.2rem", fill: "#444444" }} />
+          </a>
+          <a
+              href={socialLinks.instagram}
+              className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
+              style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
+          >
+              <FaInstagram style={{ height: "1.2rem", fill: "#444444" }} />
+          </a>
+          {socialLinks.email && (
+          <a
+              href={`mailto:${socialLinks.email}`}
+              className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
+              style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
+          >
+              <FaEnvelope style={{ height: "1.2rem", fill: "#444444" }} />
+          </a>
+          )}
+          {socialLinks.whatsappnumber && (
+          <a
+              href={`https://wa.me/${socialLinks.whatsappnumber.replace(/\D/g, "")}`}
+              className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
+              style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
+          >
+              <FaWhatsapp style={{ height: "1.2rem", fill: "#444444" }} />
+          </a>
+          )}
+          <a href={socialLinks.linkedin} className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
+              style={{ width: "45px", height: "45px", backgroundColor: '#fff' }} target="_blank" rel="noopener noreferrer" >
+              <FaLinkedin style={{ height: '1.2rem', fill: "#444444" }} />
+          </a>
+          </div>
+      </section>
+      <section className="gallery_last_bg_color_sec p-4">
+          <div className="container-fluid"></div>
+      </section>
 
     <Footer/>
 

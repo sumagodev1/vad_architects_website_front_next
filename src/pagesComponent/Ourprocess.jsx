@@ -36,9 +36,9 @@ const Ourprocess = () => {
   return (
     <div className="our-process-section py-4 bg-white" id="services">
       <div className="text-center">
-        <h2 className="mb-4 fw-light fs-1">
+        <h1 className="mb-4 fw-light">
           Our <span className="fw-bold">Process</span>
-        </h2>
+        </h1>
       </div>
       <div className="container-fluid text-center our_process_bg_color">
       <div className="container text-center">
