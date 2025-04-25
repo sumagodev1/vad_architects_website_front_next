@@ -9,37 +9,40 @@ const steps = [
   {
     number: '01',
     title: 'CONSULTATION',
-    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift. We Believe That Good Design Should Be Functional, Sustainable, And Beautiful, With A Deep Understanding Of Our Clients' Needs"`,
+    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift."`,
     icon: process1,
   },
   {
     number: '02',
     title: 'VISUALIZATION',
-    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift. We Believe That Good Design Should Be Functional, Sustainable, And Beautiful, With A Deep Understanding Of Our Clients' Needs"`,
+    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift."`,
     icon: process2,
   },
   {
     number: '03',
     title: 'EXECUTION',
-    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift. We Believe That Good Design Should Be Functional, Sustainable, And Beautiful, With A Deep Understanding Of Our Clients' Needs"`,
+    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift."`,
     icon: process3,
   },
   {
     number: '04',
     title: 'COMPLETION',
-    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift. We Believe That Good Design Should Be Functional, Sustainable, And Beautiful, With A Deep Understanding Of Our Clients' Needs"`,
+    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift."`,
     icon: process4,
   },
 ];
 
 const Ourprocess = () => {
   return (
-    <div className="our-process-section py-4 bg-white">
-      <div className="container-fluid text-center">
-        <h2 className="mb-5 fw-light fs-2">
+    <div className="our-process-section py-4 bg-white" id="services">
+      <div className="text-center">
+        <h2 className="mb-4 fw-light fs-1">
           Our <span className="fw-bold">Process</span>
         </h2>
-        <div className="row justify-content-center our_process_bg_color">
+      </div>
+      <div className="container-fluid text-center our_process_bg_color">
+      <div className="container text-center">
+        <div className="row justify-content-center">
           {steps.map((step, index) => (
             <div className="col-12 col-md-6 col-lg-3 mb-5" key={index}>
               <div className="process-wrapper position-relative">
@@ -48,7 +51,7 @@ const Ourprocess = () => {
                 </div>
                 <div className="process-card p-4 shadow-sm bg-white h-100">
                     <div className="step-inline d-flex align-items-start justify-content-start text-start">
-                        <div className="step-circle flex-shrink-0 me-3">{step.number}</div>
+                        <div className="step-circle flex-shrink-0 me-1">{step.number}</div>
                         <div>
                         <div className="step-title fw-bold text-uppercase mb-1">{step.title}</div>
                         <div className="step-text small text-justify">{step.text}</div>
@@ -59,6 +62,7 @@ const Ourprocess = () => {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

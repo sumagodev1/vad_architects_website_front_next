@@ -33,4 +33,43 @@
       text-align: center;
     }
   }
+
   
+  /* set imgs as a ratio */
+  .projectdetails_beforeimg{
+    width: 100%;
+    aspect-ratio: 1428 / 803;
+    /* object-fit: cover; */
+    border-radius: 12px;
+    display: block;
+  }
+
+  .projectdetails_askimg{
+    width: 100%;
+    aspect-ratio: 1389 / 758;
+    /* object-fit: cover; */
+    border-radius: 12px;
+    display: block;
+  }
+
+  .projectdetails_resultimg{
+    width: 100%;
+    aspect-ratio: 1428 / 803;
+    /* object-fit: cover; */
+    border-radius: 12px;
+    display: block;
+  }
+
+  .projectdetails_testimonial_logoimg{
+    width: 100%;
+    aspect-ratio: 504 / 788;
+    /* object-fit: cover; */
+    display: block;
+  }
+
+  .projectdetails_testimonialimg{
+    width: 100%;
+    aspect-ratio: 504 / 394;
+    /* object-fit: cover; */
+    display: block;
+  }

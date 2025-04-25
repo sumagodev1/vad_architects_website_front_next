@@ -2,8 +2,16 @@ import React from 'react';
 import './Home.css';
 import principal from './images/home/principal.png';
 import { FaArrowRight } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Principal = () => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/about#AboutPrincipal');
+  };
+
   return (
     <div className="container-fluid bg-light">
       <div className="row align-items-center">
@@ -55,7 +63,7 @@ const Principal = () => {
                   <br />
                   <small className="">VAD Architects</small>
                 </div>
-                <div className="timeline-arrow">
+                <div className="timeline-arrow" onClick={handleClick} style={{ cursor: 'pointer' }} >
                   <FaArrowRight />
                 </div>
               </div>

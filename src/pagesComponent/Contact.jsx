@@ -7,9 +7,29 @@ import Footer from '../layoutComponent/Footer';
 import banner from './images/banner.mp4';
 import contactpage from './images/contactpage.webp';
 import './Contact.css';
+import { useLocation } from 'react-router-dom';
 import { FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaClock, FaFacebookF, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
 
 const Contact = () => {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          // el.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => {
+            const yOffset = -100; // 👈 Adjust this value as needed (negative scrolls up)
+            const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }, 100);          
+        }, 100); // slight delay to ensure the component is mounted
+      }
+    }
+  }, [location]);
 
     const captchaRef = useRef(null);
     const [recaptchaResponse, setRecaptchaResponse] = useState(null);
@@ -310,7 +330,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Form Section */}
-        <div className="container contact-position">
+        <div className="container contact-position" id="contactus">
             <div className="row justify-content-center mb-4 mt-4">
                 <div className="col-md-9 col-lg-9">
                     <div className="card p-5 shadow-lg border-0 rounded-4">
@@ -318,7 +338,7 @@ const Contact = () => {
                         <h2 className="mb-1">Let's Collaborate. <strong>Your Vision, Our Expertise.</strong></h2>
                         <p className="">Connect. Create. Build.</p>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id="contactus">
                         <div className="mb-3">
                         <input type="text" className="form-control" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange}
                           onKeyPress={(e) => {

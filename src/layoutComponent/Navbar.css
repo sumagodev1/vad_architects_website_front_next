@@ -39,3 +39,24 @@
 .nav-item-custom.active::after {
   transform: scaleX(1);
 }
+
+/* modify */
+
+@media (max-width: 767px) {
+  .dropdown-menu {
+    display: none !important;
+  }
+}
+
+.custom-mobile-dropdown-item{
+  text-decoration: none;
+}
+
+
+.custom-dropdown-item {
+  color: #fff ;
+}
+
+.custom-dropdown-menu{
+  background-color: #212529;
+}

@@ -56,30 +56,38 @@ const CardInfo = styled.div`
 
 const Location = styled.p`
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 24px;
+  color: #000;
+`;
+
+const Title = styled.h1`
+  margin: 4px 0;
+  font-weight: bold;
   color: #6c757d;
 `;
 
-const Title = styled.h5`
-  margin: 4px 0;
-  font-weight: bold;
+const TitleUnderline = styled.div`
+  width: 90%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 8px 0 12px 0;
 `;
 
 const Subtitle = styled.p`
   margin: 0;
-  font-size: 0.75rem;
-  color: #6c757d;
+  font-size: 20px;
+  color: #000;
 `;
 
 const ArrowIcon = styled.div`
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background: #000;
+  background: #1d1d1d80;
   color: #fff;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,6 +173,13 @@ const ProjectsPage = () => {
 //     },
 //   ];
 
+useEffect(() => {
+  const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach((tooltipTriggerEl) => {
+    new window.bootstrap.Tooltip(tooltipTriggerEl);
+  });
+}, [projectsData]);
+
   return (
     <>
 
@@ -174,9 +189,9 @@ const ProjectsPage = () => {
       <div className="text-center mb-5">
       {/* <h2 className="mb-4 text-center">{decodeURIComponent(categoryTitle)}</h2> */}
         <h1 className="light">
-          Our <span className="text-dark fw-bold">Latest Vision</span>
+          Our <span className="text-dark fw-bold">Latest Vision</span> Realized
         </h1>
-        <h2>Realized</h2>
+        {/* <h2>Realized</h2> */}
         <p className="text-secondary small">
           Explore Our Most Recent Project,
           A Testament To Innovative Design And
@@ -188,21 +203,32 @@ const ProjectsPage = () => {
         {projectsData.length > 0 ? (
             projectsData.map((project, index) => (
           <ProjectCard key={index} offset={index % 2 !== 0}>
-            <img src={project.img} alt={project.title} />
+            <img className="projectpage_img" src={project.img} alt={project.title} />
             <CardInfo>
               <Location>{project.project_location}</Location>
-              <Title>{project.project_name}</Title>
+              {/* <Title>{project.project_name}</Title> */}
+              <Title
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title={project.project_name}
+              >
+                {project.project_name.length > 14
+                  ? project.project_name.slice(0, 14) + "..."
+                  : project.project_name}
+              </Title>
+              <TitleUnderline />
               <Subtitle>Explore Our Most Recent Project</Subtitle>
               {/* <ArrowIcon>→</ArrowIcon> */}
               {/* <ArrowIcon onClick={() => navigate(`/projectdetails/${project.id}`)}>→</ArrowIcon> */}
               {/* <ArrowIcon onClick={() => navigate(`/projectdetails/${categoryTitle}/${project.id}`)}>→</ArrowIcon> */}
               <ArrowIcon
                 onClick={() =>
-                    navigate(`/projectdetails/${categoryTitle}/${project.id}`, {
+                    navigate(`/projectdetails/${categoryTitle}/${project.project_name.toLowerCase().replace(/\s+/g, "-")}`, {
                     state: {
                         project_location: project.project_location,
                         project_year_of_completion: project.project_year_of_completion,
                         project_name: project.project_name,
+                        id: project.id,
                     },
                     })
                 }

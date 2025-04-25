@@ -68,9 +68,10 @@ const GalleryDetails = () => {
 
   return (
     <>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
 
-
+      <main style={{ flex: 1 }}>
       {!isActive || !categoryData ? (
         <div className="container py-5 text-center">
           <h2 className="fw-bold">Images Not Found</h2>
@@ -129,8 +130,10 @@ const GalleryDetails = () => {
 
        )}
 
+      </main>
 
       <Footer />
+      </div>
     </>
   );
 };

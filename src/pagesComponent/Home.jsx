@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import Navbar from '../layoutComponent/Navbar';
 import Footer from '../layoutComponent/Footer';
@@ -14,6 +15,7 @@ import card2 from './images/home/Frame2.webp'
 import card3 from './images/home/Frame3.webp'
 import WelcomeInquiries from './images/home/WelcomeInquiries.webp'
 import loaderVideo from './images/loader.mp4';
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
   const [desktopVideo, setDesktopVideo] = useState(null);
@@ -22,6 +24,28 @@ const Home = () => {
   const [socialLinks, setSocialLinks] = useState({});
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/contact#contactus');
+  };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          const yOffset = -100; // adjust this for headers or spacing
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
 
   useEffect(() => {
@@ -175,6 +199,7 @@ const Home = () => {
                         </button> */}
                         <div
                             className="rounded-circle"
+                            onClick={() => navigate('/about')}
                             style={{
                                 width: '40px',
                                 height: '40px',
@@ -262,7 +287,7 @@ const Home = () => {
                 {/* Contact Button */}
                 <div className="mt-3 d-flex align-items-center gap-2 me-3">
                     <h5 className="project-name" style={{ margin: 0 }}><strong>CONTACT NOW</strong></h5>
-                    <div className="rounded-circle circle-btn-black-contact-now">
+                    <div className="rounded-circle circle-btn-black-contact-now" onClick={handleClick}>
                         <span className='arrow-under-circle'>&rarr;</span>
                     </div>
                 </div>

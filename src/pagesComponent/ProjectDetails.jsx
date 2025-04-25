@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import "./ProjectDetails.css"; 
+import "./ProjectsPage.css"; 
 import { FaEnvelope, FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import projectdetails1 from './images/projectdetails/projectdetails1.webp'
 import space from './images/projectdetails/space.webp'
@@ -21,16 +22,20 @@ import axios from "axios";
 const ProjectDetails = () => {
 
     // const { projectId } = useParams();
-    const { category, projectId } = useParams();
+    const { category, projectId, projectName } = useParams();
+    
     const location = useLocation();
     const [project, setProject] = useState(null);
+
+    const stateId = location.state?.id;
+    console.log("stateId",stateId);
 
     const { project_location, project_year_of_completion, project_name } = location.state || {};
 
 useEffect(() => {
   const fetchProjectDetails = async () => {
     try {
-      const response = await axios.get(`/projectDetailsWithImages/projects/${projectId}`);
+      const response = await axios.get(`/projectDetailsWithImages/projects/${stateId}`);
       console.log("Full API Response:", response);
       const projectData = response.data;
 
@@ -148,7 +153,11 @@ useEffect(() => {
           {/* <h1 className="">
             The <strong className="fw-bold">Blue</strong> House
           </h1> */}
-          <h1>The <strong>{project_name?.split(" ")[0]}</strong> {project_name?.split(" ")[1]}</h1>
+          {/* <h1>The <strong>{project_name?.split(" ")[0]}</strong> {project_name?.split(" ")[1]}</h1> */}
+          <h1>
+            <strong>{project_name?.split(" ").slice(0, 2).join(" ")}</strong> 
+            {project_name?.split(" ").slice(2).join(" ")}
+          </h1>
           <h4 className="">
             Explore Our Most Recent Project, A Testament
           </h4>
@@ -193,7 +202,8 @@ useEffect(() => {
             // src={project?.before_img}
             src={`${axios.defaults.baseURL}${project?.before_img}`}
             alt="Excavation Site"
-            className="img-fluid rounded shadow-sm"
+            className="img-fluid rounded projectdetails_beforeimg"
+            // shadow-sm
           />
         </div>
         <div className="col-md-4">
@@ -223,7 +233,8 @@ useEffect(() => {
                     // src={ask}
                     src={`${axios.defaults.baseURL}${project?.planning_img}`}
                     alt="Excavation Site"
-                    className="img-fluid rounded shadow-sm"
+                    className="img-fluid rounded projectdetails_askimg"
+                    // shadow-sm
                 />
             </div>
         </div>
@@ -235,7 +246,8 @@ useEffect(() => {
                 <img
                     src={`${axios.defaults.baseURL}${project?.after_img}`}
                     alt="Excavation Site"
-                    className="img-fluid rounded shadow-sm"
+                    className="img-fluid rounded projectdetails_resultimg"
+                    // shadow-sm
                 />
             </div>
 
@@ -271,7 +283,7 @@ useEffect(() => {
                 className="img-fluid rounded shadow-sm me-3"
                 style={{
                   width: "400px",
-                  height: "auto",
+                  height: "400px",
                   display: "inline-block",
                 }}
                 initial={{ opacity: 0, y: 30 }}
@@ -288,11 +300,11 @@ useEffect(() => {
       <section className="testimonial-section container my-5 shadow rounded bg-white">
         <div className="row align-items-center">
             {/* Left Side - Image & Logo */}
-            <div className="col-lg-2 col-md-2 p-0 mb-4 mb-md-0 d-flex flex-column align-items-center text-white rounded">
-            <img src={logo} alt="Logo" className="img-fluid" />
+            <div className="col-lg-2 col-md-2 p-0 mb-4 mb-md-0 d-none d-md-flex flex-column align-items-center text-white rounded">
+            <img src={logo} alt="Logo" className="img-fluid projectdetails_testimonial_logoimg" />
             </div>
             <div className="col-lg-4 col-md-4 mb-4 mb-md-0 p-0 d-flex flex-column align-items-center text-white rounded">
-            <img src={`${axios.defaults.baseURL}${project?.client_img}`} alt="Logo" className="img-fluid" />
+            <img src={`${axios.defaults.baseURL}${project?.client_img}`} alt="Logo" className="img-fluid projectdetails_testimonialimg" />
             </div>
 
             {/* Right Side - Testimonial */}
@@ -309,6 +321,7 @@ useEffect(() => {
               {project?.client_review}
             </p>
             <strong>- {project?.client_name}</strong>
+            <p className="ms-2"> {project?.client_designation}</p>
             </div>
         </div>
       </section>

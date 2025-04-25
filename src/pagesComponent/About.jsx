@@ -8,8 +8,29 @@ import Team from './Team';
 import Gallery from './Gallery';
 import banner from './images/banner.mp4';
 import './About.css'; // Link to the custom CSS
+import { useLocation } from 'react-router-dom';
+
 
 const About = () => {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          // el.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => {
+            const yOffset = -100; // 👈 Adjust this value as needed (negative scrolls up)
+            const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }, 100);          
+        }, 100); // slight delay to ensure the component is mounted
+      }
+    }
+  }, [location]);
 
     const [socialLinks, setSocialLinks] = useState({});
 

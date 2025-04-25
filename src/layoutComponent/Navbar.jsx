@@ -31,6 +31,18 @@ const Navbar = () => {
     fetchCategories();
   }, []);  
 
+  const [showMobileProjects, setShowMobileProjects] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark py-3 sticky-top">
@@ -73,33 +85,50 @@ const Navbar = () => {
             </div>
 
             {/* Right Links */}
-            {/* <div className="col-md-2 col-lg-2">
-              <Link className="nav-link text-white" to="/project">
-                <span className={`nav-item-custom ${isActive("/project") ? "active" : ""}`}>PROJECTS</span>
-              </Link>
-            </div> */}
-            <div className="col-md-2 col-lg-2 dropdown">
-            <span
-              className={`text-white nav-item-custom ${isActive("/project") ? "active" : ""}`} 
-              id="projectDropdown" 
-              role="button" 
-              data-bs-toggle="dropdown" 
-              aria-expanded="false"
-            >
-            PROJECTS <FaChevronDown style={{ color: 'white', fontSize: '0.8rem', marginLeft: '5px' }} />
-            </span>
-              <ul className="dropdown-menu" aria-labelledby="projectDropdown">
-                {categories.map((category) => (
-                  <li key={category.id}>
-                    {/* <Link className="dropdown-item" to={`/project/category/${category.id}`}>
-                      {category.title}
-                    </Link> */}
-                    <Link className="dropdown-item" to={`/project/${encodeURIComponent(category.title)}`}>
-                      {category.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className={`col-md-2 col-lg-2 ${!isMobile ? 'dropdown' : ''}`}>
+              <span
+                className={`text-white nav-item-custom ${isActive("/project") ? "active" : ""}`} 
+                onClick={() => {
+                  if (isMobile) {
+                    setShowMobileProjects(!showMobileProjects);
+                  }
+                }}
+                {...(!isMobile ? {
+                  id: "projectDropdown",
+                  role: "button",
+                  'data-bs-toggle': "dropdown",
+                  'aria-expanded': "false"
+                } : {})}
+                style={{ cursor: "pointer" }}
+              >
+                PROJECTS <FaChevronDown style={{ color: 'white', fontSize: '0.8rem', marginLeft: '5px' }} />
+              </span>
+
+              {/* Desktop Dropdown */}
+              {!isMobile && (
+                <ul className="dropdown-menu custom-dropdown-menu" aria-labelledby="projectDropdown">
+                  {categories.map((category) => (
+                    <li key={category.id}>
+                      <Link className="dropdown-item custom-dropdown-item" to={`/project/${encodeURIComponent(category.title)}`}>
+                        {category.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {/* Mobile Expand */}
+              {isMobile && showMobileProjects && (
+                <ul className="list-unstyled mt-2 ps-3">
+                  {categories.map((category) => (
+                    <li key={category.id}>
+                      <Link className="text-white d-block py-1 custom-mobile-dropdown-item" to={`/project/${encodeURIComponent(category.title)}`}>
+                        {category.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className="col-md-3 col-lg-2">
               <Link className="nav-link text-white" to="/contact">

@@ -54,7 +54,7 @@ const Footer = () => {
   return (
     // pt-5 pb-3
     <footer style={{ backgroundColor: '#1D1D1D', color: '#fff' }} className="p-5">
-      <div className="container">
+      <div className="container mt-md-5 mb-md-5">
         <div className="row gy-4 text-center text-md-start">
             <div className="col-md-0 col-lg-1 col-sm-0">
                 
@@ -72,9 +72,9 @@ const Footer = () => {
           <div className="col-md-2 col-lg-2 col-sm-3">
             <h6 className="fw-bold mb-4">Company</h6>
             <ul className="list-unstyled">
-              <li><Link to="/" className="text-white text-decoration-none">Home</Link></li>
-              <li><Link to="/about" className="text-white text-decoration-none">About us</Link></li>
-              <li><Link to="/projects" className="text-white text-decoration-none">Projects</Link></li>
+              <li className="mb-2"><Link to="/" className="text-white text-decoration-none">Home</Link></li>
+              <li className="mb-2"><Link to="/about" className="text-white text-decoration-none">About us</Link></li>
+              <li className="mb-2"><Link to="/projects" className="text-white text-decoration-none">Projects</Link></li>
             </ul>
           </div>
 
@@ -82,9 +82,9 @@ const Footer = () => {
           <div className="col-md-2 col-lg-2 col-sm-3">
             <h6 className="fw-bold mb-4">More</h6>
             <ul className="list-unstyled">
-              <li><Link to="/services" className="text-white text-decoration-none">Services</Link></li>
-              <li><Link to="/career" className="text-white text-decoration-none">Career</Link></li>
-              <li><Link to="/contact" className="text-white text-decoration-none">Contact us</Link></li>
+              <li className="mb-2"><Link to="/#services" className="text-white text-decoration-none">Services</Link></li>
+              <li className="mb-2"><Link to="/career" className="text-white text-decoration-none">Career</Link></li>
+              <li className="mb-2"><Link to="/contact" className="text-white text-decoration-none">Contact us</Link></li>
             </ul>
           </div>
 
@@ -122,7 +122,7 @@ const Footer = () => {
                 <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center text-center text-lg-start gap-3">
                       {/* Copyright - Shows first on lg and below Follow Us on small screens */}
                     <div className="order-2 order-lg-1 text-white">
-                        © {currentYear} Copyright. Designed and Developed by <a href="https://sumagoinfotech.com" className="text-white text-decoration-underline">Sumago Infotech</a>
+                        © {currentYear} Copyright. Designed and Developed by <a href="https://sumagoinfotech.com/home" target="_blank" rel="noopener noreferrer" className="text-white text-decoration-underline">Sumago Infotech</a>
                     </div>
 
                     {/* Social Icons Section */}

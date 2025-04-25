@@ -5,7 +5,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 const AboutPrincipal = () => {
   return (
-    <div className="container">
+    <div className="container" id="AboutPrincipal">
       <div className="row align-items-center">
         {/* Image */}
         <div className="col-md-4 text-center mb-4 mb-md-0">

@@ -1,0 +1,24 @@
+/* .projectpage_img {
+    width: 100%;
+    aspect-ratio: 836 / 1022;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+  
+  @media (min-width: 992px) {
+    .projectpage_img {
+      max-width: 836px;
+      height: auto;
+    }
+  }
+   */
+
+.projectpage_img {
+    width: 100%;
+    aspect-ratio: 836 / 1022;
+    /* object-fit: cover; */
+    border-radius: 12px;
+    display: block;
+}
+  
