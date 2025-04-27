@@ -51,11 +51,11 @@ const Project = () => {
 
   return (
     <div className="project-section container" id="projects">
-      <h1 className="project-title mb-3 mt-1 ms-md-3">Our Featured <strong>Projects</strong></h1>
+      <h1 className="project-title mb-3 mt-1 ms-md-3" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">Our Featured <strong>Projects</strong></h1>
       <div className="row g-0">
         {/* .slice(0, 2) */}
         {featuredProjects.map((project, idx) => (
-          <div className="col-12 col-md-6 mb-4" key={project.id}>
+          <div className="col-12 col-md-6 mb-4" key={project.id} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
             <div className="project-card">
               <img
                 src={project.img}
@@ -65,12 +65,12 @@ const Project = () => {
               <div className="project-details">
                 <p className="project-location mt-3">{project.project_location}</p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h1 className="project-name" style={{ margin: 0, color: '#666' }}>
+                  <h2 className="project-name" style={{ margin: 0, color: '#666' }}>
                     <strong data-bs-toggle="tooltip" data-bs-placement="top" title={project.project_name}>{project.project_name.length > 15
                     ? project.project_name.slice(0, 15) + "..."
                     : project.project_name}
                     </strong>
-                  </h1>
+                  </h2>
                   <div
                     className="rounded-circle"
                     style={{
@@ -85,7 +85,7 @@ const Project = () => {
                     }}
                     onClick={() => handleArrowClick(project)}
                   >
-                    <span style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
+                    <span className='circle-arrow-set' style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
                   </div>
                 </div>
               </div>
@@ -101,7 +101,7 @@ const Project = () => {
               onClick={handleViewAllClick}
               style={{ cursor: categories.length > 0 ? 'pointer' : 'not-allowed' }}
             >
-              <span style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
+              <span className='circle-arrow-set' style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
             </div>
           </div>
         </div>

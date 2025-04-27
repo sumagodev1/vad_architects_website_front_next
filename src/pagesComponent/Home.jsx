@@ -16,6 +16,9 @@ import card3 from './images/home/Frame3.webp'
 import WelcomeInquiries from './images/home/WelcomeInquiries.webp'
 import loaderVideo from './images/loader.mp4';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Home = () => {
   const [desktopVideo, setDesktopVideo] = useState(null);
@@ -24,6 +27,13 @@ const Home = () => {
   const [socialLinks, setSocialLinks] = useState({});
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      once: false, // Whether animation should only happen once
+    });
+  }, []);
 
   const navigate = useNavigate();
 
@@ -153,6 +163,29 @@ const Home = () => {
 
   return (
     <>
+
+      <Helmet>
+        <title>VAD Architects | Luxury Interior & Architectural Design</title>
+        <meta name="description" content="Discover VAD Architects, leaders in luxury interior and architectural design. Explore our projects, design philosophy, and contact us for sophisticated, elegant spaces." />
+        <meta name="keywords" content="VAD Architects, luxury interior design, architectural design, high-end design, sophisticated interiors, elegant architecture, design philosophy, residential architecture, commercial interior design, Viraj Daspute, design process, testimonials." />
+        <meta name="author" content="VAD Architects" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="VAD Architects | Luxury Interior & Architectural Design" />
+        <meta property="og:description" content="Discover VAD Architects, leaders in luxury interior and architectural design. Explore our projects, design philosophy, and contact us for sophisticated, elegant spaces." />
+        <meta property="og:image" content={desktopVideo} />
+        <meta property="og:url" content="https://staging.vadarchitects.com/" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VAD Architects | Luxury Interior & Architectural Design" />
+        <meta name="twitter:description" content="Discover VAD Architects, leaders in luxury interior and architectural design. Explore our projects, design philosophy, and contact us for sophisticated, elegant spaces." />
+        <meta name="twitter:image" content={desktopVideo} />
+        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+      </Helmet>
+
         <Navbar />
 
         <div className="w-100">
@@ -183,7 +216,7 @@ const Home = () => {
         <div className="container my-5 discover_container">
             <div className="row align-items-center section-bg-color">
                 {/* Left Text */}
-                <div className="col-md-6 mb-4 mb-md-0 p-4">
+                <div className="col-md-6 mb-4 mb-md-0 p-4" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                     <h2 className="fw-bold display-6">Discover</h2>
                     <h3 className="">Our Firm</h3>
                     <p className="text-secondary text-justify">
@@ -191,7 +224,7 @@ const Home = () => {
                     </p>
 
                     {/* Right Arrow Circle Button */}
-                    <div className="d-flex justify-content-end mt-3">
+                    <div className="d-flex justify-content-end mt-4">
                         {/* <button
                         className="btn btn-outline-secondary rounded-circle"
                         style={{
@@ -226,7 +259,7 @@ const Home = () => {
                 </div>
 
                 {/* Right Image */}
-                <div className="col-md-6 text-center pe-lg-0">
+                <div className="col-md-6 text-center pe-lg-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                 <img
                     src={post1}
                     alt="Discover Our Firm"
@@ -237,31 +270,31 @@ const Home = () => {
         </div>
 
         {/* Service Cards */}
-        <div className="container my-5">
+        <div className="container my-5" id="services">
             <div className="row g-4">
                 {/* Card 1 */}
-                <div className="col-md-4 text-center p-3 card_section_bg_color">
-                <h5 className="fw-bold">INTERIOR DESIGN</h5>
-                <img src={card1} alt="Interior Design" className="img-fluid my-3" />
-                <p className="text-secondary small">
+                <div className="col-md-4 text-center p-3 card_section_bg_color" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <h5 className="fw-bold mb-2">INTERIOR DESIGN</h5>
+                <img src={card1} alt="Interior Design" className="img-fluid my-3 mb-3" />
+                <p className="small mb-3">
                     Interior design enhances interior spaces to improve functionality, aesthetics, and safety. It involves selecting materials, finishes, and furnishings.
                 </p>
                 </div>
 
                 {/* Card 2 */}
-                <div className="col-md-4 text-center bg-dark text-white p-3">
-                <h5 className="fw-bold">ARCHITECTURE</h5>
-                <img src={card2} alt="Architecture" className="img-fluid my-3" />
-                <p className="small">
+                <div className="col-md-4 text-center bg-dark text-white p-3" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <h5 className="fw-bold mb-2">ARCHITECTURE</h5>
+                <img src={card2} alt="Architecture" className="img-fluid my-3 mb-3" />
+                <p className="small mb-3">
                     Architecture combines art and science to design functional, safe, and aesthetically pleasing buildings. It involves planning, designing, and constructing physical environments.
                 </p>
                 </div>
 
                 {/* Card 3 */}
-                <div className="col-md-4 text-center p-3 card_section_bg_color">
-                <h5 className="fw-bold">LANDSCAPE</h5>
-                <img src={card3} alt="Landscape" className="img-fluid my-3" />
-                <p className="text-secondary small">
+                <div className="col-md-4 text-center p-3 card_section_bg_color" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <h5 className="fw-bold mb-2">LANDSCAPE</h5>
+                <img src={card3} alt="Landscape" className="img-fluid my-3 mb-3" />
+                <p className="small mb-3">
                     Landscape architecture designs outdoor spaces to be beautiful, functional, and sustainable. It involves planning and managing natural and built environments.
                 </p>
                 </div>
@@ -280,14 +313,14 @@ const Home = () => {
         <div className="container my-5">
             <div className="row align-items-center">
                 {/* Left Side - Images */}
-                <div className="col-md-6 position-relative text-center mb-4 mb-md-0">
+                <div className="col-md-6 position-relative text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                 <img src={WelcomeInquiries} alt="Main Interior" className="img-fluid rounded" />
                 </div>
 
                 {/* Right Side - Text */}
-                <div className="col-md-6 p-5">
-                <h1 className="fw-light" style={{fontSize:'3.5rem'}}>We Welcome</h1>
-                <h1 className="fw-light" style={{fontSize:'3.5rem'}}><span className="fw-bold">Your Inquiries.</span></h1>
+                <div className="col-md-6 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <h1 className="fw-light welcome-home-below" style={{fontSize:'3.5rem'}}>We Welcome</h1>
+                <h1 className="fw-light welcome-home-below" style={{fontSize:'3.5rem'}}><span className="fw-bold">Your Inquiries.</span></h1>
                 <p className="mt-3 mb-0" style={{fontSize:'1.2rem'}}>Please Contact Us To Discuss Your Architectural Needs.</p>
                 <p className="fst-italic small text-secondary">"Start Your Dream House Journey."</p>
 
@@ -321,9 +354,9 @@ const Home = () => {
             >
                 <FaInstagram style={{ height: "1.2rem", fill: "#444444" }} />
             </a>
-            {socialLinks.email && (
+            {socialLinks.emailid && (
             <a
-                href={`mailto:${socialLinks.email}`}
+                href={`mailto:${socialLinks.emailid}`}
                 className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
                 style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
             >

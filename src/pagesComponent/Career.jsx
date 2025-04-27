@@ -13,6 +13,8 @@ import precision from './images/home/precision.png'
 import globle from './images/home/globle.png'
 import work from './images/home/work.png'
 import careers from './images/home/careers.png'
+import { Helmet } from 'react-helmet-async';
+import loaderVideo from './images/loader.mp4';
 
 const Career = () => {
 
@@ -22,23 +24,74 @@ const Career = () => {
     const [errors, setErrors] = useState({});
     const [selectedFileName, setSelectedFileName] = useState('Upload CV');
 
+    // const handleFileChange = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //       setSelectedFileName(file.name);
+    //       // Update formData with the selected file
+    //       setFormData((prev) => ({
+    //         ...prev,
+    //         cv: file,  // Assign file here
+    //       }));
+    //     } else {
+    //       setSelectedFileName('Upload CV');
+    //       setFormData((prev) => ({
+    //         ...prev,
+    //         cv: null,  // Set cv to null if no file is selected
+    //       }));
+    //     }
+    //   };      
+
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
+          // Validate file type (must be PDF)
+          if (file.type !== 'application/pdf') {
+            setErrors((prev) => ({
+              ...prev,
+              cv: 'Please upload a valid PDF file.',
+            }));
+            setSelectedFileName('Upload CV');
+            setFormData((prev) => ({
+              ...prev,
+              cv: null,
+            }));
+            return;
+          }
+    
+          // Validate file size (must be less than 1MB)
+          if (file.size > 1 * 1024 * 1024) {
+            setErrors((prev) => ({
+              ...prev,
+              cv: 'File size should be less than 1MB',
+            }));
+            setSelectedFileName('Upload CV');
+            setFormData((prev) => ({
+              ...prev,
+              cv: null,
+            }));
+            return;
+          }
+    
+          // If valid file
           setSelectedFileName(file.name);
-          // Update formData with the selected file
+          setErrors((prev) => ({
+            ...prev,
+            cv: undefined,
+          }));
           setFormData((prev) => ({
             ...prev,
-            cv: file,  // Assign file here
+            cv: file,
           }));
+    
         } else {
           setSelectedFileName('Upload CV');
           setFormData((prev) => ({
             ...prev,
-            cv: null,  // Set cv to null if no file is selected
+            cv: null,
           }));
         }
-      };      
+    };    
 
 
     useEffect(() => {
@@ -208,12 +261,16 @@ const Career = () => {
               title: 'Success!',
               text: 'Thank you! We will contact you soon.',
               icon: 'success',
-              confirmButtonText: 'OK'
+              confirmButtonText: 'OK',
+              customClass: {
+                confirmButton: 'custom-ok-button'
+            }
           });
   
           setFormData({ name: '', email: '', mobile: '', subject: '', cv: null, message: '' });
           setSelectedFileName('Upload CV');
           setErrors({});
+          captchaRef.current.reset(); 
         } catch (error) {
           // let newErrors = {};
     
@@ -225,18 +282,65 @@ const Career = () => {
                 title: 'Error!',
                 text: 'Failed to submit data. Please try again later.',
                 icon: 'error',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'custom-ok-button'
+                }
             });
             } finally {
                   setLoading(false); // Stop loader
             }
       }
     };
+
+    const handleVideoLoaded = () => {
+      setLoading(false);  // Stop the loader when the video is loaded
+    }; 
       
 
   return (
     <>
+
+      <Helmet>
+        <title>Careers at VAD Architects | Join Our Design Team</title>
+        <meta name="description" content="Explore career opportunities at VAD Architects. Learn about our work environment, values, and apply to join our innovative luxury design team." />
+        <meta name="keywords" content="Architectural jobs, interior design careers, design employment, VAD Architects careers, job opportunities, design studio jobs, work culture, architecture recruitment, interior design recruitment, design vacancies, apply for job." />
+        <meta name="author" content="VAD Architects" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Careers at VAD Architects | Join Our Design Team" />
+        <meta property="og:description" content="Explore career opportunities at VAD Architects. Learn about our work environment, values, and apply to join our innovative luxury design team." />
+        <meta property="og:image" content={banner} />
+        <meta property="og:url" content="https://staging.vadarchitects.com/" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VAD Architects | Luxury Interior & Architectural Design" />
+        <meta name="twitter:description" content="Explore career opportunities at VAD Architects. Learn about our work environment, values, and apply to join our innovative luxury design team." />
+        <meta name="twitter:image" content={banner} />
+        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+      </Helmet>
+
       <Navbar />
+
+                  {/* Show loader if video is still loading */}
+      {loading && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, width: '100vw', height: '100vh',
+            backgroundColor: '#fff', zIndex: 9999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}
+        >
+          <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
+            <source src={loaderVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
 
         <div className='container-fluid px-0'>
             <div className='row gx-0'>
@@ -248,6 +352,7 @@ const Career = () => {
                             muted
                             loop
                             playsInline
+                            onLoadedData={handleVideoLoaded}
                         >
                             <source src={banner} type="video/mp4" />
                             Your browser does not support the video tag.
@@ -263,13 +368,13 @@ const Career = () => {
                 <div className="container">
                     <div className="row align-items-center">
                         {/* Left Content */}
-                        <div className="col-md-6 text-md-center text-center mb-4 mb-md-0">
+                        <div className="col-md-7 text-md-center text-center mb-4 mb-md-0">
                             <h2 className="fw-bold">Innovate. Collaborate. Create. Join</h2>
                             <h4 className="fw-light">Our Architectural Family.</h4>
                         </div>
 
                         {/* Right Image */}
-                        <div className="col-md-6 text-center">
+                        <div className="col-md-5 text-center">
                             <img
                             src={careerpage}
                             alt="Office"
@@ -311,6 +416,7 @@ const Career = () => {
                             <FaUpload className="upload-icon" />
                             </label>
                             <input type="file" id="cv-upload" accept=".pdf" name="cv" className="d-none" onChange={handleFileChange} />
+                            <span className="text-danger" style={{ fontSize: '13px' }}>(Document size should be less than 1MB and PDF only)</span>
                             {errors.cv && <small className="text-danger d-block">{errors.cv}</small>}
                         </div>
                         <div className="d-flex align-items-center justify-content-between flex-column flex-md-row">
@@ -342,11 +448,11 @@ const Career = () => {
                     </div>
                     </div>
 
-                    <section className="core-values-section text-white py-5">
-                        <div className="container">
+                    <section className="core-values-section text-white px-5">
+                        <div className="container p-5">
                             <div className="row g-4">
                             {/* Precision with Agility */}
-                            <div className="col-md-6 d-flex align-items-start pe-5">
+                            <div className="col-md-6 d-flex align-items-start pe-5 mb-md-4">
                                 <img src={precision} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
                                 <div>
                                 <h3 className="fw-bold mb-3 career-title">PRECISION WITH AGILITY</h3>
@@ -359,7 +465,7 @@ const Career = () => {
                             </div>
 
                             {/* A Global Perspective */}
-                            <div className="col-md-6 d-flex align-items-start pe-5">
+                            <div className="col-md-6 d-flex align-items-start pe-5 mb-md-4">
                                 <img src={globle} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
                                 <div>
                                 <h3 className="fw-bold mb-3 career-title">A GLOBAL PERSPECTIVE</h3>
@@ -420,9 +526,9 @@ const Career = () => {
             >
                 <FaInstagram style={{ height: "1.2rem", fill: "#444444" }} />
             </a>
-            {socialLinks.email && (
+            {socialLinks.emailid && (
             <a
-                href={`mailto:${socialLinks.email}`}
+                href={`mailto:${socialLinks.emailid}`}
                 className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
                 style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
             >

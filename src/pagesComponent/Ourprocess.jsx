@@ -34,8 +34,8 @@ const steps = [
 
 const Ourprocess = () => {
   return (
-    <div className="our-process-section py-4 bg-white" id="services">
-      <div className="text-center">
+    <div className="our-process-section py-4 bg-white">
+      <div className="text-center" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
         <h1 className="mb-4 fw-light">
           Our <span className="fw-bold">Process</span>
         </h1>
@@ -44,7 +44,7 @@ const Ourprocess = () => {
       <div className="container text-center">
         <div className="row justify-content-center">
           {steps.map((step, index) => (
-            <div className="col-12 col-md-6 col-lg-3 mb-5" key={index}>
+            <div className="col-12 col-md-6 col-lg-3 mb-md-5" key={index} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
               <div className="process-wrapper position-relative">
                 <div className="icon-wrapper">
                   <img src={step.icon} alt={step.title} className="process-icon" />
@@ -53,7 +53,7 @@ const Ourprocess = () => {
                     <div className="step-inline d-flex align-items-start justify-content-start text-start">
                         <div className="step-circle flex-shrink-0 me-1">{step.number}</div>
                         <div>
-                        <div className="step-title fw-bold text-uppercase mb-1">{step.title}</div>
+                        <div className="step-title fw-bold text-uppercase mb-3">{step.title}</div>
                         <div className="step-text small text-justify">{step.text}</div>
                         </div>
                     </div>

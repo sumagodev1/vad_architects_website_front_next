@@ -9,7 +9,7 @@
   }
   
   .hero-image {
-    max-width: 300px;
+    /* max-width: 300px; */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
   }
@@ -131,3 +131,9 @@ text-align: justify;
     display: block;
   }
   
+
+  .custom-ok-button {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: none !important;
+}

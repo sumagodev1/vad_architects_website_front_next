@@ -44,13 +44,18 @@
     position: relative;
     border-left: 2px solid #000;
     /* padding-left: 40px; */
-    margin-left: 2rem;
+    margin-left: 4rem;
+    margin-top: 2rem;
   }
   
   .timeline-item {
     /* margin-bottom: 40px; */
-    margin-bottom: 3.5rem;
+    margin-bottom: 4.1rem;
     position: relative;
+  }
+
+  .principal-bg-color{
+    background-color: #ECECEC;
   }
   
   .timeline-year {
@@ -59,6 +64,24 @@
     top: 0;
     font-weight: bold;
     font-size: 14px;
+  }
+
+  .timeline-year-2010{
+    top: 15px;
+  }
+
+  .timeline-year-2015-25{
+    top: 26px;
+  }
+
+  .timeline-desc-2010{
+    top: 10px;
+    position: relative;
+  }
+
+  .timeline-desc-2015-25{
+    top: 22px;
+    position: relative;
   }
   
   .timeline-dot {
@@ -86,7 +109,7 @@
   }
   
   .timeline-desc {
-    margin-left: 10px;
+    margin-left: 15px;
     font-size: 14px;
   }
   
@@ -112,12 +135,28 @@
 
   /* Project.css */
 
+  .circle-arrow-set{
+    margin-top: -4px;
+  }
+
   .project-section {
     padding: 40px 0;
   }
   
   .project-title {
     font-size: 3.1rem;
+  }
+
+  @media (max-width: 765px) {
+    .project-title {
+      font-size: 2.8rem;
+      margin-left: 1rem;
+    }
+
+    .circle-arrow-set{
+      margin-top: -1px;
+    }
+  
   }
   
   .project-card {
@@ -146,8 +185,8 @@
   .project-location {
     /* font-size: 0.9rem;
     color: #666; */
-    font-size: 24px;
-    color: #000000c2;
+    font-size: 21px;
+    color: #000;
     margin-bottom: 5px;
   }
   
@@ -206,7 +245,7 @@
   
   .client-testimonial {
     /* padding: 30px; */
-    padding: 4rem;
+    padding: 3rem;
     background-color: #222;
     color: #fff;
     border-radius: 8px;
@@ -412,8 +451,8 @@
     }
   
     .client-info img {
-      width: 60px;
-      height: 60px;
+      width: 150px;
+      height: 150px;
     }
   
     .client-info h3 {
@@ -428,6 +467,14 @@
       width: 30px;
       height: 30px;
       font-size: 16px;
+    }
+
+    .client-insights-container {
+      padding: 20px 20px 1px;
+    }
+
+    .welcome-home-below{
+      font-size: 3rem;
     }
   }
 

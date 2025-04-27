@@ -134,3 +134,9 @@
     /* top: -23rem; */
     margin-top: -23rem;
   }
+
+  .custom-ok-button {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: none !important;
+}

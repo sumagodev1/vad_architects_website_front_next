@@ -146,8 +146,8 @@ const Footer = () => {
                                     <FaLinkedin />
                                 </a>
                             )}
-                            {socialLinks.email && (
-                                <a href={`mailto:${socialLinks.email}`} className="d-flex align-items-center justify-content-center rounded-circle" style={iconStyle}>
+                            {socialLinks.emailid && (
+                                <a href={`mailto:${socialLinks.emailid}`} className="d-flex align-items-center justify-content-center rounded-circle" style={iconStyle}>
                                     <FaEnvelope />
                                 </a>
                             )}

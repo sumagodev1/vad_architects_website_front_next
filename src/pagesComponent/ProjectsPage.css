@@ -21,4 +21,11 @@
     border-radius: 12px;
     display: block;
 }
-  
+
+.show-more-less-more-btn{
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.show-more-less-more-btn:focus{
+  box-shadow: none;
+}

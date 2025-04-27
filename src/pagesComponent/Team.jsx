@@ -49,7 +49,7 @@ const Team = () => {
   return (
     <>
 
-    <div className="team-section container py-5">
+    <div className="team-section container py-5 team-section-top-mobile">
       <h2 className="text-center mb-5">
         <strong>Meet</strong> our <strong>Creative</strong> Team
       </h2>

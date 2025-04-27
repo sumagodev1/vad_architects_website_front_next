@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-import principal from './images/home/principal.png';
+import principal from './images/home/image.webp';
 import { FaArrowRight } from 'react-icons/fa';
 
 const AboutPrincipal = () => {
@@ -8,7 +8,7 @@ const AboutPrincipal = () => {
     <div className="container" id="AboutPrincipal">
       <div className="row align-items-center">
         {/* Image */}
-        <div className="col-md-4 text-center mb-4 mb-md-0">
+        <div className="col-md-3 text-center mb-4 mb-md-0">
           <img
             src={principal}
             alt="Viraj Deshpande"
@@ -34,7 +34,7 @@ const AboutPrincipal = () => {
         </div>
 
         {/* Timeline */}
-        <div className="col-md-3">
+        <div className="col-md-4">
           <div className="timeline" style={{marginLeft:'5rem'}}>
             <div className="timeline-item">
               <div className="timeline-year">2008</div>
@@ -47,9 +47,9 @@ const AboutPrincipal = () => {
             </div>
 
             <div className="timeline-item position-relative">
-              <div className="timeline-year">2010</div>
+              <div className="timeline-year timeline-year-2010">2010</div>
               <div className="timeline-dot middale-dot"></div>
-              <div className="timeline-desc d-flex justify-content-between align-items-center">
+              <div className="timeline-desc d-flex justify-content-between align-items-center timeline-desc-2010">
                 <div>
                   <strong>FOUNDED OWN FIRM</strong>
                   <br />
@@ -62,9 +62,9 @@ const AboutPrincipal = () => {
             </div>
 
             <div className="timeline-item">
-              <div className="timeline-year">2015–25</div>
+              <div className="timeline-year timeline-year-2015-25">2015–25</div>
               <div className="timeline-dot last-dot"></div>
-              <div className="timeline-desc">
+              <div className="timeline-desc timeline-desc-2015-25">
                 <strong>COMPLETED PROJECTS</strong>
                 <br />
                 <small className="">30+</small>

@@ -9,11 +9,14 @@ import Gallery from './Gallery';
 import banner from './images/banner.mp4';
 import './About.css'; // Link to the custom CSS
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import loaderVideo from './images/loader.mp4';
 
 
 const About = () => {
 
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (location.hash) {
@@ -58,9 +61,54 @@ const About = () => {
         fetchSocialLinks();
     }, []);
 
+    
+      const handleVideoLoaded = () => {
+        setLoading(false);  // Stop the loader when the video is loaded
+      }; 
+
   return (
     <>
+
+      <Helmet>
+        <title>About VAD Architects | Design Philosophy & Story of Viraj Daspute</title>
+        <meta name="description" content="Learn about VAD Architects – a visionary architecture and interior design firm in Nashik, led by Viraj Daspute. Discover our journey, values, and design philosophy." />
+        <meta name="keywords" content="VAD Architects, luxury interior design, architectural design, high-end design, sophisticated interiors, elegant architecture, design philosophy, residential architecture, commercial interior design, Viraj Daspute, design process, testimonials." />
+        <meta name="author" content="VAD Architects" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="About VAD Architects | Design Philosophy & Story of Viraj Daspute" />
+        <meta property="og:description" content="Learn about VAD Architects – a visionary architecture and interior design firm in Nashik, led by Viraj Daspute. Discover our journey, values, and design philosophy." />
+        <meta property="og:image" content={banner} />
+        <meta property="og:url" content="https://staging.vadarchitects.com/" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VAD Architects | Luxury Interior & Architectural Design" />
+        <meta name="twitter:description" content="Learn about VAD Architects – a visionary architecture and interior design firm in Nashik, led by Viraj Daspute. Discover our journey, values, and design philosophy." />
+        <meta name="twitter:image" content={banner} />
+        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+      </Helmet>
+
       <Navbar />
+
+            {/* Show loader if video is still loading */}
+      {loading && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, width: '100vw', height: '100vh',
+            backgroundColor: '#fff', zIndex: 9999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}
+        >
+          <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
+            <source src={loaderVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
 
       <div className='container-fluid px-0'>
         <div className='row gx-0'>
@@ -72,6 +120,7 @@ const About = () => {
                 muted
                 loop
                 playsInline
+                onLoadedData={handleVideoLoaded}
               >
                 <source src={banner} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -150,9 +199,9 @@ const About = () => {
             >
                 <FaInstagram style={{ height: "1.2rem", fill: "#444444" }} />
             </a>
-            {socialLinks.email && (
+            {socialLinks.emailid && (
             <a
-                href={`mailto:${socialLinks.email}`}
+                href={`mailto:${socialLinks.emailid}`}
                 className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
                 style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
             >

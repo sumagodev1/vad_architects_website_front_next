@@ -7,6 +7,7 @@ import Navbar from '../layoutComponent/Navbar';
 import Footer from '../layoutComponent/Footer';
 import project1 from './images/projects/project1.webp';
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 
 
 const Grid = styled.div`
@@ -64,11 +65,11 @@ const CardInfo = styled.div`
 
 const Location = styled.p`
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
   color: #000;
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   margin: 4px 0;
   font-weight: bold;
   color: #6c757d;
@@ -83,7 +84,7 @@ const TitleUnderline = styled.div`
 
 const Subtitle = styled.p`
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   color: #000;
 `;
 
@@ -105,6 +106,11 @@ const ArrowIcon = styled.div`
 
   &:hover {
     background: #444;
+  }
+
+  span {
+    position: relative;
+    top: -1px;  /* Move the arrow up within the circle */
   }
 `;
 
@@ -218,9 +224,42 @@ useEffect(() => {
   }, 100); // delay tooltip init
 }, [projectsData]);
 
+const [visibleProjects, setVisibleProjects] = useState(6);
+
+const handleShowMore = () => {
+  setVisibleProjects(prev => prev + 2); // Show 2 more projects
+};
+
+const handleShowLess = () => {
+  setVisibleProjects(6); // Reset to show only first 2 projects
+};
+
+
 
   return (
     <>
+
+      <Helmet>
+        <title>Projects | Luxury Interior & Architecture Portfolio | VAD Architects</title>
+        <meta name="description" content="Explore the diverse portfolio of VAD Architects' completed and ongoing luxury interior and architectural projects. See detailed case studies from brief to stunning results." />
+        <meta name="keywords" content="Architectural projects, interior design projects, design portfolio, luxury architecture portfolio, luxury interior portfolio, VAD Architects projects, residential projects, commercial projects, project showcase, completed projects, design case studies." />
+        <meta name="author" content="VAD Architects" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Projects | Luxury Interior & Architecture Portfolio | VAD Architects" />
+        <meta property="og:description" content="Explore the diverse portfolio of VAD Architects' completed and ongoing luxury interior and architectural projects. See detailed case studies from brief to stunning results." />
+        {/* <meta property="og:image" content={desktopVideo} /> */}
+        <meta property="og:url" content="https://staging.vadarchitects.com/" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VAD Architects | Luxury Interior & Architectural Design" />
+        <meta name="twitter:description" content="Explore the diverse portfolio of VAD Architects' completed and ongoing luxury interior and architectural projects. See detailed case studies from brief to stunning results." />
+        {/* <meta name="twitter:image" content={desktopVideo} /> */}
+        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+      </Helmet>
 
     <Navbar/>
 
@@ -240,7 +279,8 @@ useEffect(() => {
 
       <Grid>
         {projectsData.length > 0 ? (
-            projectsData.map((project, index) => (
+            // projectsData.map((project, index) => (
+            projectsData.slice(0, visibleProjects).map((project, index) => (
           <ProjectCard key={index} offset={index % 2 !== 0}>
             <img className="projectpage_img" src={project.img} alt={project.title} />
             <CardInfo>
@@ -272,7 +312,7 @@ useEffect(() => {
                     })
                 }
                 >
-                →
+                <span>→</span>
             </ArrowIcon>
             </CardInfo>
           </ProjectCard>
@@ -287,6 +327,14 @@ useEffect(() => {
             </div>
         )}
       </Grid>
+
+      <div className="text-center">
+        {projectsData.length > 6 && visibleProjects < projectsData.length ? (
+          <button className="btn show-more-less-more-btn" onClick={handleShowMore}>Show More Projects</button>
+        ) : visibleProjects > 6 && (
+          <button className="btn show-more-less-more-btn" onClick={handleShowLess}>Show Less Projects</button>
+        )}
+      </div>
     </div>
 
     <section className="social-media-section text-center">
@@ -306,9 +354,9 @@ useEffect(() => {
           >
               <FaInstagram style={{ height: "1.2rem", fill: "#444444" }} />
           </a>
-          {socialLinks.email && (
+          {socialLinks.emailid && (
           <a
-              href={`mailto:${socialLinks.email}`}
+              href={`mailto:${socialLinks.emailid}`}
               className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
               style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
           >

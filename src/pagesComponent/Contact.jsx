@@ -8,6 +8,8 @@ import banner from './images/banner.mp4';
 import contactpage from './images/contactpage.webp';
 import './Contact.css';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import loaderVideo from './images/loader.mp4';
 import { FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaClock, FaFacebookF, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
 
 const Contact = () => {
@@ -189,12 +191,16 @@ const Contact = () => {
                     title: 'Success!',
                     text: 'Thank you! We will contact you soon.',
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    confirmButtonText: 'OK',
+                    customClass: {
+                      confirmButton: 'custom-ok-button'
+                  }
                 });
     
                 // Reset form after submission
                 setFormData({ name: '', phone: '', email: '', subject: '' , message: '' });
                 setErrors({});
+                captchaRef.current.reset(); 
             } catch (error) {
                 console.error('Failed to submit form:', error);
     
@@ -202,7 +208,10 @@ const Contact = () => {
                     title: 'Error!',
                     text: 'Failed to submit data. Please try again later.',
                     icon: 'error',
-                    confirmButtonText: 'OK'
+                    confirmButtonText: 'OK',
+                    customClass: {
+                      confirmButton: 'custom-ok-button'
+                  }
                 });
             } finally {
                 setLoading(false); // Stop loader
@@ -235,9 +244,71 @@ const Contact = () => {
         fetchSocialLinks();
     }, []);
 
+    const [contacts, setContacts] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        // Fetch Contact Info
+        axios
+          .get("/header-contact/getheaderContacts")
+          .then((response) => {
+            if (response.data.result) {
+              setContacts(response.data.responseData || []);
+            } else {
+              setError(response.data.message);
+            }
+          })
+          .catch(() => setError("Failed to fetch contact info"));
+    }, []);
+
+    const handleVideoLoaded = () => {
+      setLoading(false);  // Stop the loader when the video is loaded
+    }; 
+      
+
   return (
     <>
+
+      <Helmet>
+        <title>Contact VAD Architects | Get in Touch for Design Inquiries</title>
+        <meta name="description" content="Contact VAD Architects for luxury interior and architectural design inquiries, collaborations, or consultations. Find our office address, phone, email, or use our contact form." />
+        <meta name="keywords" content="Contact VAD Architects, design inquiry, get in touch, architectural consultation, interior design consultation, office address, phone number, email address, contact form, design studio contact, collaboration, find us." />
+        <meta name="author" content="VAD Architects" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Contact VAD Architects | Get in Touch for Design Inquiries" />
+        <meta property="og:description" content="Contact VAD Architects for luxury interior and architectural design inquiries, collaborations, or consultations. Find our office address, phone, email, or use our contact form." />
+        <meta property="og:image" content={banner} />
+        <meta property="og:url" content="https://staging.vadarchitects.com/" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VAD Architects | Luxury Interior & Architectural Design" />
+        <meta name="twitter:description" content="Contact VAD Architects for luxury interior and architectural design inquiries, collaborations, or consultations. Find our office address, phone, email, or use our contact form." />
+        <meta name="twitter:image" content={banner} />
+        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+      </Helmet>
+
       <Navbar />
+
+                  {/* Show loader if video is still loading */}
+      {loading && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, width: '100vw', height: '100vh',
+            backgroundColor: '#fff', zIndex: 9999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}
+        >
+          <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
+            <source src={loaderVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
 
       <div className="container-fluid px-0">
         <div className="row gx-0">
@@ -249,6 +320,7 @@ const Contact = () => {
                 muted
                 loop
                 playsInline
+                onLoadedData={handleVideoLoaded}
               >
                 <source src={banner} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -293,12 +365,16 @@ const Contact = () => {
                         <div className="contact-item d-flex align-items-center mb-3">
                         <FaEnvelope className="contact-icon" />
                         <span className="contact-label">Email</span>
-                        <span className="contact-detail">Vadarchitectinfo</span>
+                        <span className="contact-detail">{socialLinks.emailid && (
+                            <a href={`mailto:${socialLinks.emailid}`} className="text-white mb-0" style={{ wordBreak: "break-word", maxWidth: "100%", textDecoration: "none" }}>
+                                {socialLinks.emailid}
+                            </a>
+                        )}</span>
                         </div>
                         <div className="contact-item d-flex align-items-start mb-3">
                         <FaMapMarkerAlt className="contact-icon mt-1" />
                         <span className="contact-label">Address</span>
-                        <span className="contact-detail">
+                        <span className="contact-detail text-white text-justify">
                             602, Ganesh Gunjan Apartment, Lawate Nagar Lane No. 2,
                             Near City Centre Mall, Untwadi, Nashik 422007.
                         </span>
@@ -309,13 +385,14 @@ const Contact = () => {
                     <div className="col-lg-4 col-md-12">
                         <div className="contact-item d-flex align-items-center mb-3">
                         <FaPhoneAlt className="contact-icon" />
-                        <span className="contact-label">Phone no.</span>
-                        <span className="contact-detail">+91 96991 56892</span>
+                        <span className="contact-label">Mobile no.</span>
+                        <span className="contact-detail"><a href={`tel:${contacts[0]?.phone2 || "213-814-2277"}`} className="text-white text-decoration-none">
+                          {contacts[0]?.phone1 || "213-814-2277"}</a></span>
                         </div>
                         <div className="contact-item d-flex align-items-center mb-3">
                         <FaClock className="contact-icon" />
                         <span className="contact-label">Timing</span>
-                        <span className="contact-detail">10 am to 7 pm</span>
+                        <span className="contact-detail text-white">10 am to 7 pm</span>
                         </div>
                     </div>
                     </div>
@@ -403,7 +480,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <div className='row justify-content-center mb-2'>
+            <div className='row justify-content-center mb-4'>
                 <div className='col-lg-9 col-md-9'>
                     <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.4242248293112!2d73.75620867427644!3d19.990702322623132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb782d8a8eff%3A0xc6fb9acb65e236e!2sVAD%20Architects!5e0!3m2!1sen!2sin!4v1744829124446!5m2!1sen!2sin"
@@ -435,9 +512,9 @@ const Contact = () => {
             >
                 <FaInstagram style={{ height: "1.2rem", fill: "#444444" }} />
             </a>
-            {socialLinks.email && (
+            {socialLinks.emailid && (
             <a
-                href={`mailto:${socialLinks.email}`}
+                href={`mailto:${socialLinks.emailid}`}
                 className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
                 style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
             >

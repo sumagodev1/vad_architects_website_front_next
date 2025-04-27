@@ -10,6 +10,7 @@ import ask from './images/projectdetails/ask.webp'
 import result from './images/projectdetails/result.webp'
 import Navbar from '../layoutComponent/Navbar';
 import Footer from '../layoutComponent/Footer';
+import { Helmet } from 'react-helmet-async';
 
 import testimonial from './images/projectdetails/testimonial.webp';
 
@@ -144,6 +145,28 @@ useEffect(() => {
   return (
     <>
 
+      <Helmet>
+        <title>Architecture & Interior Project by VAD Architects</title>
+        <meta name="description" content="Explore out work – a bespoke  projects by VAD Architects in India, reflecting timeless design, elegance, and precision." />
+        <meta name="keywords" content="VAD Architects project, maharashtra,india, architecture, luxury design Nashik, interior project India, modern architecture India, Viraj Daspute projects" />
+        <meta name="author" content="VAD Architects" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Architecture & Interior Project by VAD Architects" />
+        <meta property="og:description" content="Explore out work – a bespoke  projects by VAD Architects in India, reflecting timeless design, elegance, and precision." />
+        {/* <meta property="og:image" content={desktopVideo} /> */}
+        <meta property="og:url" content="https://staging.vadarchitects.com/" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VAD Architects | Luxury Interior & Architectural Design" />
+        <meta name="twitter:description" content="Explore out work – a bespoke  projects by VAD Architects in India, reflecting timeless design, elegance, and precision." />
+        {/* <meta name="twitter:image" content={desktopVideo} /> */}
+        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+      </Helmet>
+
     <Navbar/>
 
     <div className="container py-5">
@@ -163,7 +186,7 @@ useEffect(() => {
           </h4>
         </div>
 
-        {/* Right side: Centered block with vertical line */}
+        {/* Right side: Centered block with vertical line -- justify-content-start justify-content-md-center */}
         <div className="col-md-4 d-flex justify-content-center align-items-center">
           <div className="d-flex">
             {/* Vertical Line */}
@@ -196,7 +219,7 @@ useEffect(() => {
       </div>
 
       <div className="row align-items-center">
-        <div className="col-md-8 mb-4 mb-md-0">
+        <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0">
           <img
             // src={space}
             // src={project?.before_img}
@@ -206,7 +229,7 @@ useEffect(() => {
             // shadow-sm
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 order-1 order-md-2">
           <h2 className="h3 light">
             The <strong className="fw-bold">Space</strong>
           </h2>
@@ -242,7 +265,7 @@ useEffect(() => {
 
     <div className="container">
         <div className="row align-items-center">
-            <div className="col-md-8 mb-4 mb-md-0">
+            <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0">
                 <img
                     src={`${axios.defaults.baseURL}${project?.after_img}`}
                     alt="Excavation Site"
@@ -251,7 +274,7 @@ useEffect(() => {
                 />
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-4 order-1 order-md-2">
                 <h2 className="h3 light">
                     The <strong className="fw-bold">Result</strong>
                 </h2>
@@ -297,6 +320,7 @@ useEffect(() => {
       </div>
 
       {project?.client_img && project?.client_review ? (
+        <>
       <section className="testimonial-section container my-5 shadow rounded bg-white">
         <div className="row align-items-center">
             {/* Left Side - Image & Logo */}
@@ -318,13 +342,56 @@ useEffect(() => {
                 ))}
             </div>
             <p className="mb-2">
-              {project?.client_review}
+              {/* {project?.client_review} */}
+              {project?.client_review.length > 190 ? (
+              <>
+                {project.client_review.slice(0, 190)}...
+                <button 
+                  type="button" 
+                  className="btn btn-link p-0 ms-2 read-more-project-details" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#testimonialModal"
+                  style={{ fontSize: '0.9rem', textDecoration:'none', color:'#000', fontWeight:'bold' }}
+                >
+                  Read more
+                </button>
+              </>
+            ) : (
+              project?.client_review
+            )}
             </p>
             <strong>- {project?.client_name}</strong>
             <p className="ms-2"> {project?.client_designation}</p>
             </div>
         </div>
       </section>
+
+      <div 
+      className="modal fade" 
+      id="testimonialModal" 
+      tabIndex="-1" 
+      aria-labelledby="testimonialModalLabel" 
+      aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="testimonialModalLabel">Client Testimonial</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <div className="text-center mb-3">
+                <img src={`${axios.defaults.baseURL}${project?.client_img}`} alt="Client" className="img-fluid rounded-circle" style={{ width: '150px', height: '150px' }} />
+                <h5 className="mt-2 fw-bold">{project?.client_name}</h5>
+                <small className="">{project?.client_designation}</small>
+              </div>
+              <p>{project?.client_review}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+      
       ) : (
         <></> // Or you could show a placeholder here if you want
       )}
@@ -347,9 +414,9 @@ useEffect(() => {
             >
                 <FaInstagram style={{ height: "1.2rem", fill: "#444444" }} />
             </a>
-            {socialLinks.email && (
+            {socialLinks.emailid && (
             <a
-                href={`mailto:${socialLinks.email}`}
+                href={`mailto:${socialLinks.emailid}`}
                 className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
                 style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
             >
