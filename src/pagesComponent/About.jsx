@@ -11,12 +11,21 @@ import './About.css'; // Link to the custom CSS
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import loaderVideo from './images/loader.mp4';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const About = () => {
 
   const location = useLocation();
   const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      AOS.init({
+        duration: 1000, // Animation duration in milliseconds
+        once: false, // Whether animation should only happen once
+      });
+    }, []);
 
   useEffect(() => {
     if (location.hash) {
@@ -134,7 +143,7 @@ const About = () => {
       <div className="container my-5">
         <div className="row">
           {/* Left Column */}
-          <div className="col-md-6">
+          <div className="col-md-6" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
             <p className="about-text text-justify me-5">
               Lorem ipsum is simply dummy text of the printing and typesetting industry. 
               Lorem ipsum has been the industry’s standard dummy text ever since the 1500s, 
@@ -147,7 +156,7 @@ const About = () => {
           </div>
 
           {/* Right Column */}
-          <div className="col-md-6">
+          <div className="col-md-6" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
             <h1 className="about-heading">
               ABOUT <span className="light">VAD Architects</span>
             </h1>

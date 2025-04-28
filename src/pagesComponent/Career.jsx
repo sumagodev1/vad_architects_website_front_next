@@ -15,8 +15,18 @@ import work from './images/home/work.png'
 import careers from './images/home/careers.png'
 import { Helmet } from 'react-helmet-async';
 import loaderVideo from './images/loader.mp4';
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const Career = () => {
+
+      useEffect(() => {
+        AOS.init({
+          duration: 1000, // Animation duration in milliseconds
+          once: false, // Whether animation should only happen once
+        });
+      }, []);
 
     const captchaRef = useRef(null);
     const [recaptchaResponse, setRecaptchaResponse] = useState(null);
@@ -452,7 +462,7 @@ const Career = () => {
                         <div className="container p-5">
                             <div className="row g-4">
                             {/* Precision with Agility */}
-                            <div className="col-md-6 d-flex align-items-start pe-5 mb-md-4">
+                            <div className="col-md-6 d-flex align-items-start pe-5 mb-md-4" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                                 <img src={precision} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
                                 <div>
                                 <h3 className="fw-bold mb-3 career-title">PRECISION WITH AGILITY</h3>
@@ -465,7 +475,7 @@ const Career = () => {
                             </div>
 
                             {/* A Global Perspective */}
-                            <div className="col-md-6 d-flex align-items-start pe-5 mb-md-4">
+                            <div className="col-md-6 d-flex align-items-start pe-5 mb-md-4" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                                 <img src={globle} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
                                 <div>
                                 <h3 className="fw-bold mb-3 career-title">A GLOBAL PERSPECTIVE</h3>
@@ -478,7 +488,7 @@ const Career = () => {
                             </div>
 
                             {/* Work That Matters */}
-                            <div className="col-md-6 d-flex align-items-start pe-5">
+                            <div className="col-md-6 d-flex align-items-start pe-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                                 <img src={work} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
                                 <div>
                                 <h3 className="fw-bold mb-3 career-title">WORK THAT MATTERS</h3>
@@ -491,7 +501,7 @@ const Career = () => {
                             </div>
 
                             {/* Career Growth & Learning */}
-                            <div className="col-md-6 d-flex align-items-start pe-5">
+                            <div className="col-md-6 d-flex align-items-start pe-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                                 <img src={careers} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
                                 <div>
                                 <h3 className="fw-bold mb-3 career-title">CAREER GROWTH & LEARNING</h3>

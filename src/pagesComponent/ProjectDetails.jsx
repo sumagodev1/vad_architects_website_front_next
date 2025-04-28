@@ -11,6 +11,8 @@ import result from './images/projectdetails/result.webp'
 import Navbar from '../layoutComponent/Navbar';
 import Footer from '../layoutComponent/Footer';
 import { Helmet } from 'react-helmet-async';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import testimonial from './images/projectdetails/testimonial.webp';
 
@@ -21,6 +23,13 @@ import axios from "axios";
 
 
 const ProjectDetails = () => {
+
+      useEffect(() => {
+        AOS.init({
+          duration: 1000, // Animation duration in milliseconds
+          once: false, // Whether animation should only happen once
+        });
+      }, []);
 
     // const { projectId } = useParams();
     const { category, projectId, projectName } = useParams();
@@ -209,7 +218,7 @@ useEffect(() => {
 
       {/* Rest of content remains unchanged */}
       <div className="row mb-5">
-        <div className="col-12">
+        <div className="col-12" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
           <img
             src={`${axios.defaults.baseURL}${project?.hero_img}`}
             alt="Modern Kitchen"
@@ -219,7 +228,7 @@ useEffect(() => {
       </div>
 
       <div className="row align-items-center">
-        <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0">
+        <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
           <img
             // src={space}
             // src={project?.before_img}
@@ -229,7 +238,7 @@ useEffect(() => {
             // shadow-sm
           />
         </div>
-        <div className="col-md-4 order-1 order-md-2">
+        <div className="col-md-4 order-1 order-md-2" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
           <h2 className="h3 light">
             The <strong className="fw-bold">Space</strong>
           </h2>
@@ -242,7 +251,7 @@ useEffect(() => {
 
     <div className="container mb-5">
         <div className="row align-items-center">
-            <div className="col-md-4">
+            <div className="col-md-4" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                 <h2 className="h3 light">
                     What <strong className="fw-bold">they ask</strong>
                 </h2>
@@ -251,7 +260,7 @@ useEffect(() => {
                 </p>
             </div>
 
-            <div className="col-md-8 mb-4 mb-md-0">
+            <div className="col-md-8 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                 <img
                     // src={ask}
                     src={`${axios.defaults.baseURL}${project?.planning_img}`}
@@ -265,7 +274,7 @@ useEffect(() => {
 
     <div className="container">
         <div className="row align-items-center">
-            <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0">
+            <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                 <img
                     src={`${axios.defaults.baseURL}${project?.after_img}`}
                     alt="Excavation Site"
@@ -274,7 +283,7 @@ useEffect(() => {
                 />
             </div>
 
-            <div className="col-md-4 order-1 order-md-2">
+            <div className="col-md-4 order-1 order-md-2" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
                 <h2 className="h3 light">
                     The <strong className="fw-bold">Result</strong>
                 </h2>

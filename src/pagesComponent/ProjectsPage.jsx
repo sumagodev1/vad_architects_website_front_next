@@ -8,6 +8,8 @@ import Footer from '../layoutComponent/Footer';
 import project1 from './images/projects/project1.webp';
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const Grid = styled.div`
@@ -115,6 +117,13 @@ const ArrowIcon = styled.div`
 `;
 
 const ProjectsPage = () => {
+
+      useEffect(() => {
+        AOS.init({
+          duration: 1000, // Animation duration in milliseconds
+          once: false, // Whether animation should only happen once
+        });
+      }, []);
 
     const [socialLinks, setSocialLinks] = useState({});
 
@@ -281,7 +290,7 @@ const handleShowLess = () => {
         {projectsData.length > 0 ? (
             // projectsData.map((project, index) => (
             projectsData.slice(0, visibleProjects).map((project, index) => (
-          <ProjectCard key={index} offset={index % 2 !== 0}>
+          <ProjectCard key={index} offset={index % 2 !== 0} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
             <img className="projectpage_img" src={project.img} alt={project.title} />
             <CardInfo>
               <Location>{project.project_location}</Location>

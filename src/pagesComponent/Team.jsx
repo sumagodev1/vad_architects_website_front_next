@@ -50,12 +50,12 @@ const Team = () => {
     <>
 
     <div className="team-section container py-5 team-section-top-mobile">
-      <h2 className="text-center mb-5">
+      <h2 className="text-center mb-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
         <strong>Meet</strong> our <strong>Creative</strong> Team
       </h2>
       <div className="row justify-content-center">
         {teamMembers.map((member, idx) => (
-          <div className="col-md-4 mb-4" key={idx}>
+          <div className="col-md-4 mb-4" key={idx} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
             <div className="card team-card shadow-lg text-center">
               <img src={member.img} className="card-img-top" alt={member.name} />
               <div className="card-body">
