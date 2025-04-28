@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import footer_logo from '../pagesComponent/images/home/footer.png';
+import { useNavigate } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt  } from 'react-icons/fa';
 
 const Footer = () => {
@@ -51,6 +52,18 @@ const Footer = () => {
 
     const currentYear = new Date().getFullYear(); // Get current year dynamically
 
+    const navigate = useNavigate();
+
+    const navigateToServicesSection = () => {
+      navigate("/", { replace: false }); // Go to home
+      setTimeout(() => {
+        const servicesSection = document.getElementById("services");
+        if (servicesSection) {
+          servicesSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 80); // small delay
+    };
+
   return (
     // pt-5 pb-3
     <footer style={{ backgroundColor: '#1D1D1D', color: '#fff' }} className="p-5">
@@ -82,7 +95,7 @@ const Footer = () => {
           <div className="col-md-2 col-lg-2 col-sm-3">
             <h6 className="fw-bold mb-4">More</h6>
             <ul className="list-unstyled">
-              <li className="mb-2"><Link to="/#services" className="text-white text-decoration-none">Services</Link></li>
+              <li className="mb-2"><Link to="/#services" onClick={navigateToServicesSection} className="text-white text-decoration-none">Services</Link></li>
               <li className="mb-2"><Link to="/career" className="text-white text-decoration-none">Career</Link></li>
               <li className="mb-2"><Link to="/contact" className="text-white text-decoration-none">Reach Us</Link></li>
             </ul>

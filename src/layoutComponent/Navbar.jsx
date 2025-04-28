@@ -22,7 +22,10 @@ const Navbar = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get("category/get-category");
-        setCategories(response.data.responseData || []);
+        // setCategories(response.data.responseData || []);
+        const allCategories = response.data.responseData || [];
+        const activeCategories = allCategories.filter(category => category.isActive);
+        setCategories(activeCategories);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }

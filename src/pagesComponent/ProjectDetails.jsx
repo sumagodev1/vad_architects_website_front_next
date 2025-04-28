@@ -21,6 +21,18 @@ import logo from './images/projectdetails/logo.webp';
 import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+// Plugins
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Video from "yet-another-react-lightbox/plugins/video";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+
+
 
 const ProjectDetails = () => {
 
@@ -31,11 +43,19 @@ const ProjectDetails = () => {
         });
       }, []);
 
+    const [openLightbox, setOpenLightbox] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    
+
+
     // const { projectId } = useParams();
     const { category, projectId, projectName } = useParams();
     
     const location = useLocation();
     const [project, setProject] = useState(null);
+    const slides = project?.project_images?.map((img) => ({
+      src: `${axios.defaults.baseURL}${img}`,
+    })) || [];
 
     const stateId = location.state?.id;
     console.log("stateId",stateId);
@@ -128,27 +148,46 @@ useEffect(() => {
     //   }, []);
 
     useEffect(() => {
-        const galleryEl = scrollRef.current;
-      
-        const handleWheel = (e) => {
+      const galleryEl = scrollRef.current;
+
+      const handleWheel = (e) => {
           if (galleryEl && galleryEl.contains(e.target)) {
-            const maxScrollLeft = galleryEl.scrollWidth - galleryEl.clientWidth;
-            const isScrollable = galleryEl.scrollWidth > galleryEl.clientWidth;
-      
-            // Only lock vertical scroll if we still have horizontal scroll space
-            if (isScrollable && galleryEl.scrollLeft < maxScrollLeft) {
-              e.preventDefault();
-              galleryEl.scrollLeft += e.deltaY;
-            }
+              const maxScrollLeft = galleryEl.scrollWidth - galleryEl.clientWidth;
+              const isScrollable = galleryEl.scrollWidth > galleryEl.clientWidth;
+
+              // If horizontal scroll space is available, handle the scrolling
+              if (isScrollable) {
+                  if (e.deltaY > 0) {
+                      // Scroll Right
+                      if (galleryEl.scrollLeft < maxScrollLeft) {
+                          e.preventDefault();
+                          galleryEl.scrollLeft += e.deltaY; // Scroll right
+                      } else {
+                          // At the end, allow vertical scrolling
+                          e.preventDefault();
+                          window.scrollBy(0, 100); // Scroll the page down
+                      }
+                  } else {
+                      // Scroll Left
+                      if (galleryEl.scrollLeft > 0) {
+                          e.preventDefault();
+                          galleryEl.scrollLeft += e.deltaY; // Scroll left
+                      } else {
+                          // At the beginning, allow vertical scrolling
+                          e.preventDefault();
+                          window.scrollBy(0, -100); // Scroll the page up
+                      }
+                  }
+              }
           }
-        };
-      
-        window.addEventListener("wheel", handleWheel, { passive: false });
-      
-        return () => {
+      };
+
+      window.addEventListener("wheel", handleWheel, { passive: false });
+
+      return () => {
           window.removeEventListener("wheel", handleWheel);
-        };
-      }, []);
+      };
+  }, []);
       
       
   return (
@@ -300,33 +339,60 @@ useEffect(() => {
           ref={scrollRef}
           className="horizontal-gallery-wrapper"
           style={{
-            overflowX: 'auto',
             whiteSpace: 'nowrap',
             paddingBottom: '1rem',
+            display: 'flex',
+            // scrollBehavior: 'smooth', 
           }}
         >
           {/* Check if project.project_images exists and is an array */}
           {project?.project_images && Array.isArray(project.project_images) &&
             project.project_images.map((img, index) => (
-              <motion.img
+              <motion.div
                 key={index}
-                src={`${axios.defaults.baseURL}${img}`} // Prepend base URL to the image path
-                alt={`Gallery ${index + 1}`}
-                className="img-fluid rounded shadow-sm me-3"
-                style={{
-                  width: "400px",
-                  height: "400px",
-                  display: "inline-block",
-                }}
+                className="gallery-item gallery-item-horizontal-scroll"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+                // transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
                 viewport={{ once: true }}
+                style={{
+                  minWidth: "900px", // Ensure each image has a fixed width
+                  height: "550px", // Ensure a fixed height for consistency
+                  display: "inline-block",
+                  position: 'relative',
+                }}
+              >
+              <img
+                src={`${axios.defaults.baseURL}${img}`}
+                alt={`Gallery ${index + 1}`}
+                className="img-fluid rounded shadow-sm"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  cursor: "pointer", // Add pointer cursor so users know it's clickable
+                }}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setOpenLightbox(true);
+                }}
               />
+              </motion.div>
             ))
           }
         </div>
       </div>
+
+      {openLightbox && (
+        <Lightbox
+          open={openLightbox}
+          close={() => setOpenLightbox(false)}
+          slides={slides}
+          index={currentIndex}
+          plugins={[Fullscreen, Slideshow, Thumbnails, Video, Zoom]}
+        />
+      )}
+
 
       {project?.client_img && project?.client_review ? (
         <>

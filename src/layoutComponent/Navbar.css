@@ -59,4 +59,5 @@
 
 .custom-dropdown-menu{
   background-color: #212529;
+  min-width: 100%;
 }

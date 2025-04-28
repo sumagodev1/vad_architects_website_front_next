@@ -16,9 +16,9 @@ import './App.css'
 
 function App() {
 
-    // axios.defaults.baseURL = `http://localhost:8000/`;
+    axios.defaults.baseURL = `http://localhost:8000/`;
 
-    axios.defaults.baseURL = `https://staging-api.vadarchitects.com/`;
+    // axios.defaults.baseURL = `https://staging-api.vadarchitects.com/`;
 
   return (
     <>

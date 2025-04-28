@@ -19,7 +19,7 @@ const Principal = () => {
         <div className="col-md-3 text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
           <img
             src={principal}
-            alt="Viraj Deshpande"
+            alt="Viraj Daspute"
             className="img-fluid rounded shadow"
           />
         </div>
@@ -30,12 +30,12 @@ const Principal = () => {
             <strong>Principal</strong> Architect
           </h2>
           <p className="mb-2 text-justify">
-            Viraj Deshpande Is A Visionary Architect With Over 15 Years Of Experience In Designing Sustainable And
+            Viraj Daspute Is A Visionary Architect With Over 15 Years Of Experience In Designing Sustainable And
             Innovative Buildings. He Founded VAD In 2010, With A Mission To Create Spaces That Inspire And Uplift
             Communities.
           </p>
           <p className="text-justify">
-            Viraj Deshpande Is A Visionary Architect With Over 15 Years Of Experience In Designing Sustainable And
+            Viraj Daspute Is A Visionary Architect With Over 15 Years Of Experience In Designing Sustainable And
             Innovative Buildings. His designs blend creativity, functionality, and a deep respect for nature. He Founded VAD In 2010, With A Mission To Create Spaces That Inspire And Uplift
             Communities.
           </p>
