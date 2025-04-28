@@ -9,7 +9,7 @@ import contactpage from './images/contactpage.webp';
 import './Contact.css';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import loaderVideo from './images/loader.mp4';
+// import loaderVideo from './images/loader.mp4';
 import { FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaClock, FaFacebookF, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
 
 const Contact = () => {
@@ -68,7 +68,7 @@ const Contact = () => {
     
         // Phone validation
         if (!validatePhone(formData.phone)) {
-          newErrors.phone = "Mobile number must start with 9, 8, 7, or 6 after +91";
+          newErrors.phone = "Mobile number must start with 9, 8, 7, or 6";
           valid = false;
         } else {
           newErrors.phone = "";
@@ -114,7 +114,8 @@ const Contact = () => {
     };
 
     const validatePhone = (phone) => {
-        const phoneRegex = /^\+91[6789]\d{9}$/;  // Only allow numbers that start with +91 followed by 9, 8, 7, or 6
+        // const phoneRegex = /^\+91[6789]\d{9}$/;  
+        const phoneRegex = /^[6789]\d{9}$/; // Only allow numbers that start with +91 followed by 9, 8, 7, or 6
         return phoneRegex.test(phone);
     };
 
@@ -261,9 +262,9 @@ const Contact = () => {
           .catch(() => setError("Failed to fetch contact info"));
     }, []);
 
-    const handleVideoLoaded = () => {
-      setLoading(false);  // Stop the loader when the video is loaded
-    }; 
+    // const handleVideoLoaded = () => {
+    //   setLoading(false);  // Stop the loader when the video is loaded
+    // }; 
       
 
   return (
@@ -293,23 +294,6 @@ const Contact = () => {
 
       <Navbar />
 
-                  {/* Show loader if video is still loading */}
-      {loading && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0, left: 0, width: '100vw', height: '100vh',
-            backgroundColor: '#fff', zIndex: 9999,
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
-          }}
-        >
-          <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
-            <source src={loaderVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      )}
-
       <div className="container-fluid px-0">
         <div className="row gx-0">
           <div className="col-12">
@@ -320,7 +304,6 @@ const Contact = () => {
                 muted
                 loop
                 playsInline
-                onLoadedData={handleVideoLoaded}
               >
                 <source src={banner} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -435,8 +418,8 @@ const Contact = () => {
                         <div className="col-md-6">
                             <input type="tel" className="form-control" name="phone" placeholder="Mobile Number" value={formData.phone}
                             onChange={handleChange}
-                            minLength="13" 
-                            maxLength="13" />
+                            minLength="10" 
+                            maxLength="10" />
                             {errors.phone && <small className="text-danger">{errors.phone}</small>}
                         </div>
                         </div>

@@ -14,7 +14,7 @@ import globle from './images/home/globle.png'
 import work from './images/home/work.png'
 import careers from './images/home/careers.png'
 import { Helmet } from 'react-helmet-async';
-import loaderVideo from './images/loader.mp4';
+// import loaderVideo from './images/loader.mp4';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -214,7 +214,8 @@ const Career = () => {
     // };
 
     const validatePhone = (phone) => {
-        const phoneRegex = /^\+91[6789]\d{9}$/;  // Only allow numbers that start with +91 followed by 9, 8, 7, or 6
+        // const phoneRegex = /^\+91[6789]\d{9}$/;  
+        const phoneRegex = /^[6789]\d{9}$/;  // Only allow numbers that start with +91 followed by 9, 8, 7, or 6
         return phoneRegex.test(phone);
     };
 
@@ -230,7 +231,7 @@ const Career = () => {
         if (!formData.mobile.trim()) {
           newErrors.mobile = 'Mobile number is required';
         } else if (!validatePhone(formData.mobile)) {
-          newErrors.mobile = 'Mobile number must start with 9, 8, 7, or 6 and must be 10 digits after +91';
+          newErrors.mobile = 'Mobile number must start with 9, 8, 7, or 6 and must be 10 digits';
         }
     
         if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
@@ -302,10 +303,6 @@ const Career = () => {
             }
       }
     };
-
-    const handleVideoLoaded = () => {
-      setLoading(false);  // Stop the loader when the video is loaded
-    }; 
       
 
   return (
@@ -335,23 +332,6 @@ const Career = () => {
 
       <Navbar />
 
-                  {/* Show loader if video is still loading */}
-      {loading && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0, left: 0, width: '100vw', height: '100vh',
-            backgroundColor: '#fff', zIndex: 9999,
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
-          }}
-        >
-          <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
-            <source src={loaderVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      )}
-
         <div className='container-fluid px-0'>
             <div className='row gx-0'>
                 <div className='col-12'>
@@ -362,7 +342,6 @@ const Career = () => {
                             muted
                             loop
                             playsInline
-                            onLoadedData={handleVideoLoaded}
                         >
                             <source src={banner} type="video/mp4" />
                             Your browser does not support the video tag.
@@ -412,7 +391,7 @@ const Career = () => {
                             {errors.email && <small className="text-danger">{errors.email}</small>}
                             </div>
                             <div className="col-md-6">
-                            <input type="text" name="mobile" className="form-control placeholder" placeholder="Mobile No" value={formData.mobile} onChange={handleChange} minLength="13" maxLength="13" />
+                            <input type="text" name="mobile" className="form-control placeholder" placeholder="Mobile No" value={formData.mobile} onChange={handleChange} minLength="10" maxLength="10" />
                             {errors.mobile && <small className="text-danger">{errors.mobile}</small>}
                             </div>
                         </div>
