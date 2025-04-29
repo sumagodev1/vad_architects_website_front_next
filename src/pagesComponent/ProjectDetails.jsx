@@ -77,7 +77,7 @@ useEffect(() => {
       };
 
       // Only show if active
-      if (!formattedProject.isDelete) {
+      if (!formattedProject.isDelete && !formattedProject.isActive) {
         setProject(formattedProject);
       }
     } catch (error) {
