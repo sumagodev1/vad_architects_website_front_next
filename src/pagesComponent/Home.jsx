@@ -220,7 +220,7 @@ const Home = () => {
                     <h1 className="fw-bold" style={{fontSize:'3.2rem'}}>Discover</h1>
                       {/* display-6 */}
                     <h2 className="fw-100" style={{fontSize:'3.2rem'}}>Our Firm</h2>
-                    <p className="text-secondary text-justify" style={{fontSize:'18px', fontWeight:'300'}}>
+                    <p className="text-justify" style={{fontSize:'18px', fontWeight:'200'}}>
                         Viraj Daspute is a visionary architect with over 15 years of experience in designing sustainable and innovative buildings. He founded V.A.D Architects Studio in 2010, with a mission to create spaces that inspire and uplift communities.
                     </p>
 

@@ -9,25 +9,25 @@ const steps = [
   {
     number: '01',
     title: 'CONSULTATION',
-    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift."`,
+    text: `Understanding your vision to craft tailored design solutions that inspire.`,
     icon: process1,
   },
   {
     number: '02',
     title: 'VISUALIZATION',
-    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift."`,
+    text: `Transforming concepts into vivid 3D models and immersive design previews.`,
     icon: process2,
   },
   {
     number: '03',
     title: 'EXECUTION',
-    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift."`,
+    text: `Coordinating construction with precision, quality, and design integrity.`,
     icon: process3,
   },
   {
     number: '04',
     title: 'COMPLETION',
-    text: `"Our Design Philosophy Is Centered Around Creating Spaces That Inspire And Uplift."`,
+    text: `Delivering finished spaces that reflect your lifestyle, needs, and dreams.`,
     icon: process4,
   },
 ];
