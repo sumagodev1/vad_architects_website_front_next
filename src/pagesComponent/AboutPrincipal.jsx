@@ -8,7 +8,7 @@ const AboutPrincipal = () => {
     <div className="container" id="AboutPrincipal">
       <div className="row align-items-center">
         {/* Image */}
-        <div className="col-md-3 text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+        <div className="col-md-3 text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
           <img
             src={principal}
             alt="Viraj Daspute"
@@ -17,7 +17,7 @@ const AboutPrincipal = () => {
         </div>
 
         {/* Center Bio */}
-        <div className="col-md-5 px-md-3" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+        <div className="col-md-5 px-md-3" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
           <h1 className='fw-100 about-principal-title'>
             <strong className='fw-bold'>Principal</strong> Architect
           </h1>
@@ -34,7 +34,7 @@ const AboutPrincipal = () => {
         </div>
 
         {/* Timeline */}
-        <div className="col-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+        <div className="col-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
           <div className="timeline" style={{marginLeft:'5rem'}}>
             <div className="timeline-item">
               <div className="timeline-year">2008</div>

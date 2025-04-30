@@ -143,14 +143,14 @@ const About = () => {
       <div className="container my-4 my-md-5">
         <div className="row">
           {/* Left Column */}
-          <div className="col-md-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+          <div className="col-md-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
             <p className="about-text text-justify me-5">
             At VAD Architects, we believe great design starts with understanding how people live and work. Our team brings together expertise in architecture, interiors, and landscaping to design spaces that are comfortable, efficient, and visually appealing. Whether it’s a residential project or a commercial building, we prioritize good planning, natural light, smart material use, and long-term value. Every project is handled with care, detail, and a focus on lasting quality.
             </p>
           </div>
 
           {/* Right Column */}
-          <div className="col-md-7" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+          <div className="col-md-7" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
             <h1 className="about-heading">
               ABOUT <span className="light">VAD Architects</span>
             </h1>

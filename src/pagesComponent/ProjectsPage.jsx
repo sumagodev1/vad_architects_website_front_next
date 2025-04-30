@@ -298,7 +298,7 @@ const handleShowLess = () => {
         {projectsData.length > 0 ? (
             // projectsData.map((project, index) => (
             projectsData.slice(0, visibleProjects).map((project, index) => (
-          <ProjectCard key={index} offset={index % 2 !== 0} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+          <ProjectCard key={index} offset={index % 2 !== 0} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
             <img className="projectpage_img" src={project.img} alt={project.title} />
             <CardInfo>
               <Location className="fw-200">{project.project_location}</Location>

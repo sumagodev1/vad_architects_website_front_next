@@ -16,7 +16,7 @@ const Principal = () => {
     <div className="container-fluid principal-bg-color">
       <div className="row align-items-center">
         {/* Image */}
-        <div className="col-md-3 text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+        <div className="col-md-3 text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
           <img
             src={principal}
             alt="Viraj Daspute"
@@ -25,7 +25,7 @@ const Principal = () => {
         </div>
 
         {/* Center Bio */}
-        <div className="col-md-5 px-md-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+        <div className="col-md-5 px-md-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
           <h1 className='fw-200 principal-title'>
             <strong>Principal</strong> Architect
           </h1>
@@ -42,7 +42,7 @@ const Principal = () => {
         </div>
 
         {/* Timeline */}
-        <div className="col-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+        <div className="col-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
           <div className="timeline">
             <div className="timeline-item">
               <div className="timeline-year">2008</div>

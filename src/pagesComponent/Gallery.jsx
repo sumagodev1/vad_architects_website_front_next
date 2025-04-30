@@ -42,7 +42,7 @@ const Gallery = () => {
 
       <div className="row g-4">
         {galleryData.map(item => (
-          <div className="col-12 col-sm-6 col-md-4" key={item.id} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+          <div className="col-12 col-sm-6 col-md-4" key={item.id} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
             <Link
               to={`/gallery/${item.gallery_category.toLowerCase().replace(/\s+/g, '-')}`}
               className="text-decoration-none"

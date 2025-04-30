@@ -51,11 +51,11 @@ const Project = () => {
 
   return (
     <div className="project-section container" id="projects">
-      <h1 className="project-title mb-4 mt-1 ms-md-3 set-home-page-projects-row light fw-100" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">Our Featured <strong className='fw-bold'>Projects</strong></h1>
+      <h1 className="project-title mb-4 mt-1 ms-md-3 set-home-page-projects-row light fw-100" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">Our Featured <strong className='fw-bold'>Projects</strong></h1>
       <div className="row g-0 set-home-page-projects-row">
         {/* .slice(0, 2) */}
         {featuredProjects.map((project, idx) => (
-          <div className="col-12 col-md-6 mb-4 set-home-page-projects" key={project.id} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+          <div className="col-12 col-md-6 mb-4 set-home-page-projects" key={project.id} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
             <div className="project-card">
               <img
                 src={project.img}

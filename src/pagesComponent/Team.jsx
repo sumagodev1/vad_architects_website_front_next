@@ -59,13 +59,13 @@ const Team = () => {
     <>
 
     <div className="team-section container py-5 team-section-top-mobile">
-      <h2 className="text-center mb-5 fw-100 meet-team-title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+      <h2 className="text-center mb-5 fw-100 meet-team-title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
         <strong className='fw-bold'>Meet</strong> our <strong className='fw-bold'>Creative</strong> Team
       </h2>
       <div className="row justify-content-center">
         {/* {teamMembers.map((member, idx) => ( */}
         {teamMembers.slice(0, visibleCount).map((member, idx) => (
-          <div className="col-md-4 mb-4" key={idx} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+          <div className="col-md-4 mb-4" key={idx} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
             <div className="card team-card shadow-lg text-center">
               <img src={member.img} className="card-img-top" alt={member.name} />
               <div className="card-body">
