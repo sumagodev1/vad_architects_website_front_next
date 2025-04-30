@@ -36,8 +36,8 @@ const Gallery = () => {
   return (
     <div className="container py-4 py-md-5">
       <div className="text-center mb-4">
-        <h1><strong>VISUAL</strong> <span className="light">CORNER</span></h1>
-        <p>A Journey Through Imagery And Expression</p>
+        <h1 className='fw-100 gallery-title'><strong className='fw-bold'>VISUAL</strong> <span className="light">CORNER</span></h1>
+        <p className='gallery-subtitle fw-200'>A Journey Through Imagery And Expression</p>
       </div>
 
       <div className="row g-4">

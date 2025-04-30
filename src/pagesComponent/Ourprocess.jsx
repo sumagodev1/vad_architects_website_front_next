@@ -36,7 +36,7 @@ const Ourprocess = () => {
   return (
     <div className="our-process-section py-4 bg-white">
       <div className="text-center" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-        <h1 className="mb-4 fw-light">
+        <h1 className="mb-4 fw-100 client-title">
           Our <span className="fw-bold">Process</span>
         </h1>
       </div>

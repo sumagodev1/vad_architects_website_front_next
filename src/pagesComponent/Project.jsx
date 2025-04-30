@@ -51,7 +51,7 @@ const Project = () => {
 
   return (
     <div className="project-section container" id="projects">
-      <h1 className="project-title mb-4 mt-1 ms-md-3 set-home-page-projects-row light" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">Our Featured <strong>Projects</strong></h1>
+      <h1 className="project-title mb-4 mt-1 ms-md-3 set-home-page-projects-row light fw-100" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">Our Featured <strong className='fw-bold'>Projects</strong></h1>
       <div className="row g-0 set-home-page-projects-row">
         {/* .slice(0, 2) */}
         {featuredProjects.map((project, idx) => (
@@ -85,7 +85,7 @@ const Project = () => {
                     }}
                     onClick={() => handleArrowClick(project)}
                   >
-                    <span className='circle-arrow-set' style={{ fontSize: '1.3rem', color: 'white' }}>&rarr;</span>
+                    <span className='circle-arrow-set' style={{ fontSize: '1.3rem', color: 'white', fontWeight:'300' }}>&rarr;</span>
                   </div>
                 </div>
               </div>
@@ -101,7 +101,7 @@ const Project = () => {
               onClick={handleViewAllClick}
               style={{ cursor: categories.length > 0 ? 'pointer' : 'not-allowed' }}
             >
-              <span className='circle-arrow-set' style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
+              <span className='circle-arrow-set' style={{ fontSize: '1.2rem', color: 'white', fontWeight:'300' }}>&rarr;</span>
             </div>
           </div>
         </div>

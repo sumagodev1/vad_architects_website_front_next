@@ -217,9 +217,10 @@ const Home = () => {
             <div className="row align-items-center section-bg-color">
                 {/* Left Text */}
                 <div className="col-md-6 mb-4 mb-md-0 p-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                    <h2 className="fw-bold display-6">Discover</h2>
-                    <h3 className="">Our Firm</h3>
-                    <p className="text-secondary text-justify">
+                    <h1 className="fw-bold" style={{fontSize:'3.2rem'}}>Discover</h1>
+                      {/* display-6 */}
+                    <h2 className="fw-100" style={{fontSize:'3.2rem'}}>Our Firm</h2>
+                    <p className="text-secondary text-justify" style={{fontSize:'18px', fontWeight:'300'}}>
                         Viraj Daspute is a visionary architect with over 15 years of experience in designing sustainable and innovative buildings. He founded V.A.D Architects Studio in 2010, with a mission to create spaces that inspire and uplift communities.
                     </p>
 
@@ -274,7 +275,7 @@ const Home = () => {
             <div className="row g-4">
                 {/* Card 1 */}
                 <div className="col-md-4 text-center p-3 card_section_bg_color" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                <h5 className="fw-bold mb-2">INTERIOR DESIGN</h5>
+                <h4 className="mb-2 fw-200">INTERIOR DESIGN</h4>
                 <img src={card1} alt="Interior Design" className="img-fluid my-3 mb-3" />
                 <p className="small mb-3">
                     Interior design enhances interior spaces to improve functionality, aesthetics, and safety. It involves selecting materials, finishes, and furnishings.
@@ -283,7 +284,7 @@ const Home = () => {
 
                 {/* Card 2 */}
                 <div className="col-md-4 text-center bg-dark text-white p-3" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                <h5 className="fw-bold mb-2">ARCHITECTURE</h5>
+                <h4 className="mb-2 fw-200">ARCHITECTURE</h4>
                 <img src={card2} alt="Architecture" className="img-fluid my-3 mb-3" />
                 <p className="small mb-3">
                     Architecture combines art and science to design functional, safe, and aesthetically pleasing buildings. It involves planning, designing, and constructing physical environments.
@@ -292,7 +293,7 @@ const Home = () => {
 
                 {/* Card 3 */}
                 <div className="col-md-4 text-center p-3 card_section_bg_color" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                <h5 className="fw-bold mb-2">LANDSCAPE</h5>
+                <h4 className="mb-2 fw-200">LANDSCAPE</h4>
                 <img src={card3} alt="Landscape" className="img-fluid my-3 mb-3" />
                 <p className="small mb-3">
                     Landscape architecture designs outdoor spaces to be beautiful, functional, and sustainable. It involves planning and managing natural and built environments.

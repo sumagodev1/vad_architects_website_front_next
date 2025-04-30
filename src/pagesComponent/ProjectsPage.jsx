@@ -92,7 +92,7 @@ const TitleUnderline = styled.div`
 
 const Subtitle = styled.p`
   margin: 0;
-  font-size: 18px;
+  font-size: 19px;
   color: #000;
 `;
 
@@ -118,8 +118,9 @@ const ArrowIcon = styled.div`
 
   span {
     position: relative;
-    top: -2px;  /* Move the arrow up within the circle */
-    font-size: 1.2rem;
+    top: -1px;  /* Move the arrow up within the circle */
+    font-size: 1.4rem;
+    font-weight: 300;
   }
 `;
 
@@ -282,11 +283,11 @@ const handleShowLess = () => {
     <div className="container py-5 project-page-set">
       <div className="text-center mb-5">
       {/* <h2 className="mb-4 text-center">{decodeURIComponent(categoryTitle)}</h2> */}
-        <h1 className="light">
+        <h1 className="fw-100">
           Our <span className="text-dark fw-bold">Latest Vision</span> Realized
         </h1>
         {/* <h2>Realized</h2> */}
-        <p className="text-secondary small">
+        <p className="fw-200" style={{fontSize:'1.2rem'}}>
           Explore Our Most Recent Project,
           A Testament To Innovative Design And
           Meticulous Execution.
@@ -300,7 +301,7 @@ const handleShowLess = () => {
           <ProjectCard key={index} offset={index % 2 !== 0} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
             <img className="projectpage_img" src={project.img} alt={project.title} />
             <CardInfo>
-              <Location>{project.project_location}</Location>
+              <Location className="fw-200">{project.project_location}</Location>
               {/* <Title>{project.project_name}</Title> */}
               <Title
                 data-bs-toggle="tooltip"

@@ -261,11 +261,11 @@ useEffect(() => {
             The <strong className="fw-bold">Blue</strong> House
           </h1> */}
           {/* <h1>The <strong>{project_name?.split(" ")[0]}</strong> {project_name?.split(" ")[1]}</h1> */}
-          <h1>
+          <h1 className="">
             <strong>{project_name?.split(" ").slice(0, 2).join(" ")}</strong> 
             {project_name?.split(" ").slice(2).join(" ")}
           </h1>
-          <h4 className="">
+          <h4 className="fw-200">
             Explore Our Most Recent Project, A Testament
           </h4>
         </div>
@@ -279,14 +279,14 @@ useEffect(() => {
 
             {/* Vertical Info Block */}
             <div>
-              <p className="fw-bold text-uppercase mb-1">Category</p>
-              <p className="mb-3">{category}</p>
+              <h5 className="fw-200 text-uppercase mb-1">Category</h5>
+              <h5 className="mb-3 fw-bold">{category}</h5>
 
-              <p className="fw-bold text-uppercase mb-1">Year</p>
-              <p className="mb-3">{project_year_of_completion}</p>
+              <h5 className="fw-200 text-uppercase mb-1">Year</h5>
+              <h5 className="mb-3 fw-bold">{project_year_of_completion}</h5>
 
-              <p className="fw-bold text-uppercase mb-1">Location</p>
-              <p className="mb-0">{project_location}</p>
+              <h5 className="fw-200 text-uppercase mb-1">Location</h5>
+              <h5 className="mb-0 fw-bold">{project_location}</h5>
             </div>
           </div>
         </div>
@@ -314,10 +314,10 @@ useEffect(() => {
             // shadow-sm
           />
         </div>
-        <div className="col-md-4 order-1 order-md-2" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-          <h2 className="h3 light">
+        <div className="col-md-4 order-1 order-md-2 p-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+          <h1 className="fw-100 project-details-title">
             The <strong className="fw-bold">Space</strong>
-          </h2>
+          </h1>
           <p className="text-justify">
             {project?.before_description}
           </p>
@@ -328,7 +328,7 @@ useEffect(() => {
     <div className="container mb-5">
         <div className="row align-items-center">
             <div className="col-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                <h2 className="h3 light">
+                <h2 className="fw-100 project-details-title">
                     What <strong className="fw-bold">they ask</strong>
                 </h2>
                 <p className="text-justify">
@@ -359,8 +359,8 @@ useEffect(() => {
                 />
             </div>
 
-            <div className="col-md-4 order-1 order-md-2" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                <h2 className="h3 light">
+            <div className="col-md-4 order-1 order-md-2 p-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+                <h2 className="fw-100 project-details-title">
                     The <strong className="fw-bold">Result</strong>
                 </h2>
                 <p className="text-justify">
@@ -433,7 +433,7 @@ useEffect(() => {
 
       {project?.client_img && project?.client_review ? (
         <>
-      <section className="testimonial-section container my-5 shadow rounded bg-white">
+      <section className="testimonial-section container my-5 shadow rounded bg-white project-deatils-testimonial">
         <div className="row align-items-center">
             {/* Left Side - Image & Logo */}
             <div className="col-lg-2 col-md-2 p-0 mb-4 mb-md-0 d-none d-md-flex flex-column align-items-center text-white rounded">

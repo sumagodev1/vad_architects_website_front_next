@@ -55,8 +55,8 @@ const ClientInsights = () => {
     <div className='row'>
     <div className="client-insights-container">
       <div className="client-insights-header mb-5">
-        <h1><strong>Client</strong> Insights</h1>
-        <h5>Hear What They Say!</h5>
+        <h1 className='fw-100 client-title'><strong className='fw-bold'>Client</strong> Insights</h1>
+        <h5 className='client-subtitle fw-300'>Hear What They Say!</h5>
       </div>
       <div className="client-insights-slider-wrapper container">
         <Slider ref={sliderRef} {...settings} className="client-insights-slider">

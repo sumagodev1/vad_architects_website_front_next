@@ -407,6 +407,19 @@
       margin-top: 0.5rem;
     }
   }
+
+  @media (min-width: 768px) {
+    .principal-title{
+      font-size: 3.5rem;
+    }
+
+    .client-title{
+      font-size: 3rem;
+    }
+    .client-subtitle{
+      font-size: 1.6rem;
+    }
+  }
   
   
   /* New styles for the circular buttons */

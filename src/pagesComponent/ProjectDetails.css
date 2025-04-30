@@ -103,3 +103,13 @@
       position: relative;
     }
   } 
+
+  @media (min-width: 768px) {
+    .project-details-title{
+      font-size: 3rem;
+    }
+    .project-deatils-testimonial{
+      margin-top: 0rem !important;
+    }
+  }
+  

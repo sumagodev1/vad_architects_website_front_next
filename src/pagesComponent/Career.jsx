@@ -359,7 +359,7 @@ const Career = () => {
                         {/* Left Content */}
                         <div className="col-md-7 text-md-center text-center mb-4 mb-md-0">
                             <h2 className="fw-bold">Innovate. Collaborate. Create. Join</h2>
-                            <h4 className="fw-light">Our Architectural Family.</h4>
+                            <h4 className="fw-100">Our Architectural Family.</h4>
                         </div>
 
                         {/* Right Image */}
@@ -378,8 +378,8 @@ const Career = () => {
                 <div className="container">
                     <div className="row justify-content-center">
                     <div className="col-lg-10 col-md-10 col-sm-12 p-4 form-box shadow bg-white rounded mb-5">
-                        <h1 className="text-center mb-3">Join Our <strong>Architectural Family.</strong></h1>
-                        <p className="text-center">Discover your potential with us. Explore our career page.</p>
+                        <h1 className="text-center mb-3 fw-100">Join Our <strong className='fw-bold'>Architectural Family.</strong></h1>
+                        <p className="text-center fw-200 career-subpara">Discover your potential with us. Explore our career page.</p>
                         <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <input type="text" name="name" className="form-control placeholder" placeholder="Name" value={formData.name} onChange={handleChange} />
@@ -442,9 +442,9 @@ const Career = () => {
                             <div className="row g-4">
                             {/* Precision with Agility */}
                             <div className="col-md-6 d-flex align-items-start pe-5 mb-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                                <img src={precision} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
+                                <img src={precision} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img core-values-section-img4' />
                                 <div>
-                                <h3 className="fw-bold mb-3 career-title">PRECISION WITH AGILITY</h3>
+                                <h4 className="fw-bold mb-3 career-title">PRECISION WITH AGILITY</h4>
                                 <p className='core-values-section-para'>
                                     We may be a compact team, but our expertise and technology enable
                                     us to deliver big results. Our focus on efficiency, creativity,
@@ -455,9 +455,9 @@ const Career = () => {
 
                             {/* A Global Perspective */}
                             <div className="col-md-6 d-flex align-items-start pe-5 mb-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                                <img src={globle} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
+                                <img src={globle} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img core-values-section-img4' />
                                 <div>
-                                <h3 className="fw-bold mb-3 career-title">A GLOBAL PERSPECTIVE</h3>
+                                <h4 className="fw-bold mb-3 career-title">A GLOBAL PERSPECTIVE</h4>
                                 <p className='core-values-section-para'>
                                     With a diverse team and international collaborations, we bring
                                     together expertise from around the world to deliver top-tier steel
@@ -468,9 +468,9 @@ const Career = () => {
 
                             {/* Work That Matters */}
                             <div className="col-md-6 d-flex align-items-start pe-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                                <img src={work} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
+                                <img src={work} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img core-values-section-img4' />
                                 <div>
-                                <h3 className="fw-bold mb-3 career-title">WORK THAT MATTERS</h3>
+                                <h4 className="fw-bold mb-3 career-title">WORK THAT MATTERS</h4>
                                 <p className='core-values-section-para'>
                                     At Moderach Steel, every detail counts. We take pride in crafting
                                     solutions that optimize fabrication, enhance efficiency, and bring
@@ -481,9 +481,9 @@ const Career = () => {
 
                             {/* Career Growth & Learning */}
                             <div className="col-md-6 d-flex align-items-start pe-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                                <img src={careers} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img' />
+                                <img src={careers} alt="Logo" className='fs-2 me-2 img-fluid core-values-section-img core-values-section-img5' />
                                 <div>
-                                <h3 className="fw-bold mb-3 career-title">CAREER GROWTH & LEARNING</h3>
+                                <h4 className="fw-bold mb-3 career-title">CAREER GROWTH & LEARNING</h4>
                                 <p className='core-values-section-para'>
                                     We empower our team to grow—whether it's mastering new skills,
                                     taking on new challenges, or exploring innovative projects that

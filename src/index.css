@@ -1,6 +1,14 @@
 /* @import url('https://fonts.cdnfonts.com/css/century-gothic'); */
 
-@import url('https://fonts.cdnfonts.com/css/century-gothic-paneuropean?styles=90072,90069,90073,90075,90076,90070,90071,90074,90065,90066,90067,90068,90063,90064');
+/* @import url('https://fonts.cdnfonts.com/css/century-gothic-paneuropean?styles=90072,90069,90073,90075,90076,90070,90071,90074,90065,90066,90067,90068,90063,90064'); */
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('/Outfit/static/Outfit-Regular.ttf') format('truetype'),
+       url('/Outfit/static/Outfit-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   margin: 0;
@@ -9,7 +17,7 @@ body {
     sans-serif; */
   /* font-family: "Century Gothic", sans-serif; */
   /* font-family: 'Century Gothic Paneuropean', sans-serif; */
-  font-family: "Century Gothic" !important;
+  font-family: 'Outfit', sans-serif !important;
                                                 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,6 +34,13 @@ code {
 
 .text-justify{
   text-align: justify !important;
+}
+
+.fw-100{
+  font-weight: 100;
+}
+.fw-200{
+  font-weight: 200;
 }
 
 .w-35{

@@ -318,9 +318,9 @@ const Contact = () => {
 
           <div className="row justify-content-center text-center mb-4">
             <div className="col-md-8 mt-5">
-              <h2>
+              <h1 className='fw-200'>
                 Let’s Build <strong className="fw-bold">Your Vision Together.</strong>
-              </h2>
+              </h1>
               <p className="text-muted small">
                 We’re Excited To Discuss Your Architectural Project. Please Reach Out To Us Using The Information Below, Or Fill Out The Contact Form.
               </p>
@@ -395,8 +395,8 @@ const Contact = () => {
                 <div className="col-md-9 col-lg-9">
                     <div className="card p-4 p-md-5 shadow-lg border-0 rounded-4">
                     <div className="text-center mb-4">
-                        <h2 className="mb-1">Let's Collaborate. <strong>Your Vision, Our Expertise.</strong></h2>
-                        <p className="">Connect. Create. Build.</p>
+                        <h2 className="mb-1 fw-200">Let's Collaborate. <strong className='fw-bold'>Your Vision, Our Expertise.</strong></h2>
+                        <p className="fw-200" style={{fontSize:'19px'}}>Connect. Create. Build.</p>
                     </div>
                     <form onSubmit={handleSubmit} id="contactus">
                         <div className="mb-3">

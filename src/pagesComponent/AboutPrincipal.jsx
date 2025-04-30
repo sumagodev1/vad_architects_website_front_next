@@ -18,8 +18,8 @@ const AboutPrincipal = () => {
 
         {/* Center Bio */}
         <div className="col-md-5 px-md-3" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-          <h1 className='light about-principal-title'>
-            <strong>Principal</strong> Architect
+          <h1 className='fw-100 about-principal-title'>
+            <strong className='fw-bold'>Principal</strong> Architect
           </h1>
           <p className="mb-2 text-justify">
             Viraj Daspute Is A Visionary Architect With Over 15 Years Of Experience In Designing Sustainable And

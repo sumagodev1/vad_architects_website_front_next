@@ -59,8 +59,8 @@ const Team = () => {
     <>
 
     <div className="team-section container py-5 team-section-top-mobile">
-      <h2 className="text-center mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-        <strong>Meet</strong> our <strong>Creative</strong> Team
+      <h2 className="text-center mb-5 fw-100 meet-team-title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+        <strong className='fw-bold'>Meet</strong> our <strong className='fw-bold'>Creative</strong> Team
       </h2>
       <div className="row justify-content-center">
         {/* {teamMembers.map((member, idx) => ( */}

@@ -43,11 +43,26 @@
     }
 
     .about-principal-title{
-      font-size: 47px;
+      font-size: 52px;
     }
   }
 
   /* Team section */
+
+  @media (min-width: 768px) {
+    .meet-team-title{
+      font-size: 2.5rem;
+    }
+
+    .gallery-title{
+      font-size: 2.6rem;
+    }
+
+    .gallery-subtitle{
+      font-size: 1.4rem;
+    }
+  }
+  
   
   .team-card {
     border: none;
