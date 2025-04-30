@@ -446,9 +446,7 @@ const Career = () => {
                                 <div>
                                 <h4 className="fw-bold mb-3 career-title">PRECISION WITH AGILITY</h4>
                                 <p className='core-values-section-para'>
-                                    We may be a compact team, but our expertise and technology enable
-                                    us to deliver big results. Our focus on efficiency, creativity,
-                                    and flexibility ensures every project is executed with excellence.
+                                At VAD Architects, we believe good design goes beyond looks—it solves problems, improves lives, and shapes better spaces. Every project we take on is guided by this purpose-driven approach.
                                 </p>
                                 </div>
                             </div>
@@ -459,9 +457,7 @@ const Career = () => {
                                 <div>
                                 <h4 className="fw-bold mb-3 career-title">A GLOBAL PERSPECTIVE</h4>
                                 <p className='core-values-section-para'>
-                                    With a diverse team and international collaborations, we bring
-                                    together expertise from around the world to deliver top-tier steel
-                                    detailing solutions.
+                                From master planning and architectural design to interiors and landscaping, our integrated services ensure each project flows seamlessly from concept to completion. We bring depth, clarity, and consistency to every detail.
                                 </p>
                                 </div>
                             </div>
@@ -472,9 +468,7 @@ const Career = () => {
                                 <div>
                                 <h4 className="fw-bold mb-3 career-title">WORK THAT MATTERS</h4>
                                 <p className='core-values-section-para'>
-                                    At Moderach Steel, every detail counts. We take pride in crafting
-                                    solutions that optimize fabrication, enhance efficiency, and bring
-                                    designs to life with precision.
+                                We’re a studio where learning happens every day—on real projects, through open collaboration, and by exploring new ideas. Here, you grow by doing, guided by experienced mentors and inspired by meaningful work.
                                 </p>
                                 </div>
                             </div>
@@ -485,9 +479,7 @@ const Career = () => {
                                 <div>
                                 <h4 className="fw-bold mb-3 career-title">CAREER GROWTH & LEARNING</h4>
                                 <p className='core-values-section-para'>
-                                    We empower our team to grow—whether it's mastering new skills,
-                                    taking on new challenges, or exploring innovative projects that
-                                    push boundaries.
+                                We take pride in our ability to listen, understand, and design spaces that truly reflect the client’s needs. Our process is thoughtful, responsive, and always rooted in delivering the best outcomes—both visually and functionally.
                                 </p>
                                 </div>
                             </div>
