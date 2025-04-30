@@ -254,7 +254,7 @@ const Home = () => {
                                 cursor: 'pointer' // optional, if you want it to feel clickable
                             }}
                             >
-                            <span style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
+                            <span style={{ fontSize: '1.2rem', color: 'white', fontWeight:'300', marginTop:'-4px' }}>&rarr;</span>
                         </div>
                     </div>
                 </div>
