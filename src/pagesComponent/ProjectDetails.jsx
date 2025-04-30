@@ -147,47 +147,83 @@ useEffect(() => {
     //     };
     //   }, []);
 
-    useEffect(() => {
-      const galleryEl = scrollRef.current;
 
-      const handleWheel = (e) => {
-          if (galleryEl && galleryEl.contains(e.target)) {
-              const maxScrollLeft = galleryEl.scrollWidth - galleryEl.clientWidth;
-              const isScrollable = galleryEl.scrollWidth > galleryEl.clientWidth;
+    // Old scrolll
+  //   useEffect(() => {
+  //     const galleryEl = scrollRef.current;
 
-              // If horizontal scroll space is available, handle the scrolling
-              if (isScrollable) {
-                  if (e.deltaY > 0) {
-                      // Scroll Right
-                      if (galleryEl.scrollLeft < maxScrollLeft) {
-                          e.preventDefault();
-                          galleryEl.scrollLeft += e.deltaY; // Scroll right
-                      } else {
-                          // At the end, allow vertical scrolling
-                          e.preventDefault();
-                          window.scrollBy(0, 100); // Scroll the page down
-                      }
-                  } else {
-                      // Scroll Left
-                      if (galleryEl.scrollLeft > 0) {
-                          e.preventDefault();
-                          galleryEl.scrollLeft += e.deltaY; // Scroll left
-                      } else {
-                          // At the beginning, allow vertical scrolling
-                          e.preventDefault();
-                          window.scrollBy(0, -100); // Scroll the page up
-                      }
-                  }
-              }
-          }
-      };
+  //     const handleWheel = (e) => {
+  //         if (galleryEl && galleryEl.contains(e.target)) {
+  //             const maxScrollLeft = galleryEl.scrollWidth - galleryEl.clientWidth;
+  //             const isScrollable = galleryEl.scrollWidth > galleryEl.clientWidth;
 
-      window.addEventListener("wheel", handleWheel, { passive: false });
+  //             // If horizontal scroll space is available, handle the scrolling
+  //             if (isScrollable) {
+  //                 if (e.deltaY > 0) {
+  //                     // Scroll Right
+  //                     if (galleryEl.scrollLeft < maxScrollLeft) {
+  //                         e.preventDefault();
+  //                         galleryEl.scrollLeft += e.deltaY; // Scroll right
+  //                     } else {
+  //                         // At the end, allow vertical scrolling
+  //                         e.preventDefault();
+  //                         window.scrollBy(0, 100); // Scroll the page down
+  //                     }
+  //                 } else {
+  //                     // Scroll Left
+  //                     if (galleryEl.scrollLeft > 0) {
+  //                         e.preventDefault();
+  //                         galleryEl.scrollLeft += e.deltaY; // Scroll left
+  //                     } else {
+  //                         // At the beginning, allow vertical scrolling
+  //                         e.preventDefault();
+  //                         window.scrollBy(0, -100); // Scroll the page up
+  //                     }
+  //                 }
+  //             }
+  //         }
+  //     };
 
-      return () => {
-          window.removeEventListener("wheel", handleWheel);
-      };
+  //     window.addEventListener("wheel", handleWheel, { passive: false });
+
+  //     return () => {
+  //         window.removeEventListener("wheel", handleWheel);
+  //     };
+  // }, []);
+
+  useEffect(() => {
+    const galleryEl = scrollRef.current;
+  
+    const handleWheel = (e) => {
+      if (!galleryEl) return;
+  
+      const isInsideGallery = galleryEl.contains(e.target);
+      if (!isInsideGallery) return; // If not inside the gallery, ignore
+  
+      const maxScrollLeft = galleryEl.scrollWidth - galleryEl.clientWidth;
+      const isScrollable = galleryEl.scrollWidth > galleryEl.clientWidth;
+  
+      if (isScrollable) {
+        const scrollAmount = e.deltaY; // You can also tweak it like e.deltaY * 1.5 for faster scroll
+        const atStart = galleryEl.scrollLeft <= 0;
+        const atEnd = galleryEl.scrollLeft >= maxScrollLeft;
+  
+        if ((scrollAmount < 0 && !atStart) || (scrollAmount > 0 && !atEnd)) {
+          // If there's room to scroll in that direction, prevent page scroll
+          e.preventDefault();
+          galleryEl.scrollLeft += scrollAmount;
+        }
+        // If at start or end, don't prevent default, allow normal page scroll
+      }
+    };
+  
+    window.addEventListener("wheel", handleWheel, { passive: false });
+  
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
   }, []);
+  
       
       
   return (
@@ -235,7 +271,8 @@ useEffect(() => {
         </div>
 
         {/* Right side: Centered block with vertical line -- justify-content-start justify-content-md-center */}
-        <div className="col-md-4 d-flex justify-content-center align-items-center">
+        {/* <div className="col-md-4 d-flex justify-content-center align-items-center"> */}
+        <div className="col-md-4 d-flex justify-content-start justify-content-md-center align-items-center">
           <div className="d-flex">
             {/* Vertical Line */}
             <div className="vertical-line me-4"></div>
@@ -257,7 +294,7 @@ useEffect(() => {
 
       {/* Rest of content remains unchanged */}
       <div className="row mb-5">
-        <div className="col-12" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+        <div className="col-12" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
           <img
             src={`${axios.defaults.baseURL}${project?.hero_img}`}
             alt="Modern Kitchen"
@@ -267,7 +304,7 @@ useEffect(() => {
       </div>
 
       <div className="row align-items-center">
-        <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+        <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
           <img
             // src={space}
             // src={project?.before_img}
@@ -277,11 +314,11 @@ useEffect(() => {
             // shadow-sm
           />
         </div>
-        <div className="col-md-4 order-1 order-md-2" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+        <div className="col-md-4 order-1 order-md-2" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
           <h2 className="h3 light">
             The <strong className="fw-bold">Space</strong>
           </h2>
-          <p className="">
+          <p className="text-justify">
             {project?.before_description}
           </p>
         </div>
@@ -290,16 +327,16 @@ useEffect(() => {
 
     <div className="container mb-5">
         <div className="row align-items-center">
-            <div className="col-md-4" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+            <div className="col-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <h2 className="h3 light">
                     What <strong className="fw-bold">they ask</strong>
                 </h2>
-                <p className="">
+                <p className="text-justify">
                     {project?.planning_description}
                 </p>
             </div>
 
-            <div className="col-md-8 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+            <div className="col-md-8 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <img
                     // src={ask}
                     src={`${axios.defaults.baseURL}${project?.planning_img}`}
@@ -313,7 +350,7 @@ useEffect(() => {
 
     <div className="container">
         <div className="row align-items-center">
-            <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+            <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <img
                     src={`${axios.defaults.baseURL}${project?.after_img}`}
                     alt="Excavation Site"
@@ -322,11 +359,11 @@ useEffect(() => {
                 />
             </div>
 
-            <div className="col-md-4 order-1 order-md-2" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+            <div className="col-md-4 order-1 order-md-2" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <h2 className="h3 light">
                     The <strong className="fw-bold">Result</strong>
                 </h2>
-                <p className="">
+                <p className="text-justify">
                   {project?.after_description}
                 </p>
             </div>
@@ -356,8 +393,8 @@ useEffect(() => {
                 // transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
                 viewport={{ once: true }}
                 style={{
-                  minWidth: "900px", // Ensure each image has a fixed width
-                  height: "550px", // Ensure a fixed height for consistency
+                  minWidth: "651px", // Ensure each image has a fixed width
+                  height: "411px", // Ensure a fixed height for consistency
                   display: "inline-block",
                   position: 'relative',
                 }}

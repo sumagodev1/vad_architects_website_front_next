@@ -1,5 +1,5 @@
 .about-text {
-    font-size: 14px;
+    /* font-size: 14px; */
     color: #555;
     line-height: 1.8;
   }
@@ -34,6 +34,16 @@
     .team-section-top-mobile{
       padding-top: 2rem !important;
       padding-bottom: 2rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .about-heading {
+      font-size: 46px;
+    }
+
+    .about-principal-title{
+      font-size: 47px;
     }
   }
 
@@ -73,6 +83,15 @@
     .about-gray-color-div {
         background-color: unset;
     }
+}
+
+.team-more-btn{
+  /* padding: 10px 20px; */
+  padding: 6px 11px;
+  font-weight: bold;
+}
+.team-more-btn:focus{
+  box-shadow: none !important;
 }
 
 /* Gallery design */

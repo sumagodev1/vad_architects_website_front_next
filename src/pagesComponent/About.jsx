@@ -140,10 +140,10 @@ const About = () => {
       </div>
 
       {/* --- ABOUT SECTION --- */}
-      <div className="container my-5">
+      <div className="container my-4 my-md-5">
         <div className="row">
           {/* Left Column */}
-          <div className="col-md-6" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+          <div className="col-md-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
             <p className="about-text text-justify me-5">
               Lorem ipsum is simply dummy text of the printing and typesetting industry. 
               Lorem ipsum has been the industry’s standard dummy text ever since the 1500s, 
@@ -156,7 +156,7 @@ const About = () => {
           </div>
 
           {/* Right Column */}
-          <div className="col-md-6" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+          <div className="col-md-7" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
             <h1 className="about-heading">
               ABOUT <span className="light">VAD Architects</span>
             </h1>
@@ -164,19 +164,19 @@ const About = () => {
             <div className="row mt-4">
               <div className="col-6 mb-4">
                 <h3 className="stat-title fw-bold">10 YEAR</h3>
-                <h4 className="stat-subtitle">Experience</h4>
+                <h3 className="stat-subtitle">Experience</h3>
               </div>
               <div className="col-6 mb-4">
                 <h3 className="stat-title">150,000</h3>
-                <h4 className="stat-subtitle">SQFT</h4>
+                <h3 className="stat-subtitle">SQFT</h3>
               </div>
               <div className="col-6 mb-4">
                 <h3 className="stat-title">8 TEAM</h3>
-                <h4 className="stat-subtitle">Members</h4>
+                <h3 className="stat-subtitle">Members</h3>
               </div>
               <div className="col-6 mb-4">
                 <h3 className="stat-title">50</h3>
-                <h4 className="stat-subtitle">Projects</h4>
+                <h3 className="stat-subtitle">Projects</h3>
               </div>
             </div>
           </div>

@@ -26,6 +26,7 @@ const teamMembers = [
 const Team = () => {
 
   const [teamMembers, setTeamMembers] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   useEffect(() => {
     const fetchTeamMembers = async () => {
@@ -46,16 +47,25 @@ const Team = () => {
     fetchTeamMembers();
   }, []);
 
+  const handleShowMore = () => {
+    setVisibleCount((prevCount) => Math.min(prevCount + 3, teamMembers.length));
+  };
+
+  const handleShowLess = () => {
+    setVisibleCount(6);
+  };
+
   return (
     <>
 
     <div className="team-section container py-5 team-section-top-mobile">
-      <h2 className="text-center mb-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+      <h2 className="text-center mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
         <strong>Meet</strong> our <strong>Creative</strong> Team
       </h2>
       <div className="row justify-content-center">
-        {teamMembers.map((member, idx) => (
-          <div className="col-md-4 mb-4" key={idx} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+        {/* {teamMembers.map((member, idx) => ( */}
+        {teamMembers.slice(0, visibleCount).map((member, idx) => (
+          <div className="col-md-4 mb-4" key={idx} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
             <div className="card team-card shadow-lg text-center">
               <img src={member.img} className="card-img-top" alt={member.name} />
               <div className="card-body">
@@ -67,9 +77,25 @@ const Team = () => {
         ))}
       </div>
     </div>
+
     <div className='container-fluid about-gray-color-div'>
 
     </div>
+
+          {/* Show More / Less Buttons */}
+          {teamMembers.length > 6 && (
+      <div className="text-center mt-4">
+        {visibleCount < teamMembers.length ? (
+          <button className="btn btn-primary team-more-btn" onClick={handleShowMore}>
+            Show More Team
+          </button>
+        ) : (
+          <button className="btn btn-secondary team-more-btn" onClick={handleShowLess}>
+            Show Less Team
+          </button>
+        )}
+      </div>
+    )}
 
     </>
   );

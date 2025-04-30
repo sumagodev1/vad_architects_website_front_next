@@ -52,12 +52,31 @@
   text-decoration: none;
 }
 
+.navbar-toggler:focus {
+  box-shadow: none;
+}
 
 .custom-dropdown-item {
   color: #fff ;
+}
+.custom-dropdown-item:active{
+  background-color: #e9ecef !important;
+  color: #000 !important;
 }
 
 .custom-dropdown-menu{
   background-color: #212529;
   min-width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 980px) {
+  .nav-item-project-custom {
+    width: 121px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1196px) {
+  .nav-item-about-custom {
+    width: 104px;
+  }
 }

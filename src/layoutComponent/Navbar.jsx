@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import white_logo from './images/white_logo.png';
+import mobile_logo from './images/mobile_logo.png';
 import { FaChevronDown } from 'react-icons/fa';
 
 
@@ -52,9 +53,9 @@ const Navbar = () => {
       <div className="container">
 
         {/* Logo on the left (mobile) or center (desktop) */}
-        <a className="navbar-brand d-md-none" href="#">
-          <img src={white_logo} alt="V.A.D. Architects" style={{ height: '50px' }} />
-        </a>
+        <Link className="navbar-brand d-md-none" to="/">
+          <img src={mobile_logo} alt="V.A.D. Architects" style={{ height: '50px' }} />
+        </Link>
 
         {/* Hamburger toggle button for mobile */}
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -76,7 +77,7 @@ const Navbar = () => {
             </div>
             <div className="col-md-3 col-lg-2">
             <Link className="nav-link text-white" to="/about">
-              <span className={`nav-item-custom ${isActive("/about") ? "active" : ""}`}>WHO WE ARE</span>
+              <span className={`nav-item-custom nav-item-about-custom ${isActive("/about") ? "active" : ""}`}>WHO WE ARE</span>
             </Link>
             </div>
 
@@ -90,7 +91,7 @@ const Navbar = () => {
             {/* Right Links */}
             <div className={`col-md-2 col-lg-2 ${!isMobile ? 'dropdown' : ''}`}>
               <span
-                className={`text-white nav-item-custom ${isActive("/project") ? "active" : ""}`} 
+                className={`text-white nav-item-custom nav-item-project-custom  ${isActive("/project") ? "active" : ""}`} 
                 onClick={() => {
                   if (isMobile) {
                     setShowMobileProjects(!showMobileProjects);

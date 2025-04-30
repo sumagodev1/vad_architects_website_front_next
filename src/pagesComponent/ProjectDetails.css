@@ -26,6 +26,7 @@
   @media (max-width: 768px) {
     .testimonial-section {
       padding: 2rem 1rem;
+      margin-top: -3rem !important;
     }
   
     .testimonial-section .bg-dark {
@@ -94,4 +95,11 @@
     border-radius: 8px; /* Optional: rounded corners for images */
   }
   
-  
+  @media (max-width: 765px) {
+    .gallery-item-horizontal-scroll{
+      min-width: 285px !important;
+      height: 311px !important;
+      display: inline-block;
+      position: relative;
+    }
+  } 

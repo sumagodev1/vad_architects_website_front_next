@@ -50,6 +50,33 @@ const Footer = () => {
 
     }, []);
 
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+      const fetchCategories = async () => {
+        try {
+          const response = await axios.get("category/get-category");
+          const allCategories = response.data.responseData || [];
+          const activeCategories = allCategories.filter((cat) => cat.isActive);
+          setCategories(activeCategories);
+        } catch (error) {
+          console.error("Error fetching categories in footer:", error);
+        }
+      };
+
+      fetchCategories();
+    }, []);
+
+    const handleOurWorkClick = () => {
+      if (categories.length > 0) {
+        const firstCategory = categories[0];
+        const encodedTitle = encodeURIComponent(firstCategory.title);
+        navigate(`/project/${encodedTitle}`);
+      }
+    };
+    
+
+
     const currentYear = new Date().getFullYear(); // Get current year dynamically
 
     const navigate = useNavigate();
@@ -59,10 +86,14 @@ const Footer = () => {
       setTimeout(() => {
         const servicesSection = document.getElementById("services");
         if (servicesSection) {
-          servicesSection.scrollIntoView({ behavior: "smooth" });
+          const yOffset = -90; // Adjust this value (negative = scroll more up)
+          const y = servicesSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    
+          window.scrollTo({ top: y, behavior: "smooth" });
         }
-      }, 80); // small delay
+      }, 100); // small delay
     };
+    
 
   return (
     // pt-5 pb-3
@@ -87,7 +118,12 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li className="mb-2"><Link to="/" className="text-white text-decoration-none">Home</Link></li>
               <li className="mb-2"><Link to="/about" className="text-white text-decoration-none">Who We Are</Link></li>
-              <li className="mb-2"><Link to="/#projects" className="text-white text-decoration-none">Our Work</Link></li>
+              {/* <li className="mb-2"><Link to="/#projects" className="text-white text-decoration-none">Our Work</Link></li> */}
+              <li className="mb-2">
+                <span onClick={handleOurWorkClick} style={{ cursor: "pointer" }} className="text-white text-decoration-none">
+                  Our Work
+                </span>
+              </li>
             </ul>
           </div>
 

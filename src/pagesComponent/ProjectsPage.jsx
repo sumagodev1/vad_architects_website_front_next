@@ -25,7 +25,7 @@ const Grid = styled.div`
 
 const ProjectCard = styled.div`
   position: relative;
-  width: 48%;
+  width: 45%;
   margin-top: ${(props) => (props.offset ? '75px' : '0')};
 
   @media (max-width: 768px) {
@@ -36,15 +36,21 @@ const ProjectCard = styled.div`
   img {
     width: 100%;
     height: auto;
-    border-radius: 12px;
     display: block;
+  }
+
+  @media (min-width: 765px) {
+    img {
+    width: 100%;
+    }
   }
 `;
 
 const CardInfo = styled.div`
   position: absolute;
   bottom: 4rem;
-  left: -20px;
+  left: -25px;
+  border: solid 1px #DCDCDC;
   background: white;
   padding: 16px 20px 36px 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
@@ -86,7 +92,7 @@ const TitleUnderline = styled.div`
 
 const Subtitle = styled.p`
   margin: 0;
-  font-size: 22px;
+  font-size: 18px;
   color: #000;
 `;
 
@@ -112,7 +118,8 @@ const ArrowIcon = styled.div`
 
   span {
     position: relative;
-    top: -1px;  /* Move the arrow up within the circle */
+    top: -2px;  /* Move the arrow up within the circle */
+    font-size: 1.2rem;
   }
 `;
 
@@ -272,7 +279,7 @@ const handleShowLess = () => {
 
     <Navbar/>
 
-    <div className="container py-5">
+    <div className="container py-5 project-page-set">
       <div className="text-center mb-5">
       {/* <h2 className="mb-4 text-center">{decodeURIComponent(categoryTitle)}</h2> */}
         <h1 className="light">
@@ -290,7 +297,7 @@ const handleShowLess = () => {
         {projectsData.length > 0 ? (
             // projectsData.map((project, index) => (
             projectsData.slice(0, visibleProjects).map((project, index) => (
-          <ProjectCard key={index} offset={index % 2 !== 0} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+          <ProjectCard key={index} offset={index % 2 !== 0} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
             <img className="projectpage_img" src={project.img} alt={project.title} />
             <CardInfo>
               <Location>{project.project_location}</Location>

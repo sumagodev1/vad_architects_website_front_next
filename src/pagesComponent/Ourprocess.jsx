@@ -35,7 +35,7 @@ const steps = [
 const Ourprocess = () => {
   return (
     <div className="our-process-section py-4 bg-white">
-      <div className="text-center" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+      <div className="text-center" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
         <h1 className="mb-4 fw-light">
           Our <span className="fw-bold">Process</span>
         </h1>
@@ -44,7 +44,7 @@ const Ourprocess = () => {
       <div className="container text-center">
         <div className="row justify-content-center">
           {steps.map((step, index) => (
-            <div className="col-12 col-md-6 col-lg-3 mb-md-5" key={index} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+            <div className="col-12 col-md-6 col-lg-3 mb-md-5" key={index} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
               <div className="process-wrapper position-relative">
                 <div className="icon-wrapper">
                   <img src={step.icon} alt={step.title} className="process-icon" />

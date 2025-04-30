@@ -51,6 +51,8 @@ const ClientInsights = () => {
   const goToPrevious = () => sliderRef.current?.slickPrev();
 
   return (
+    <div className='container'>
+    <div className='row'>
     <div className="client-insights-container">
       <div className="client-insights-header mb-5">
         <h1><strong>Client</strong> Insights</h1>
@@ -99,11 +101,11 @@ const ClientInsights = () => {
         </Slider>
         <button className="slider-button slider-prev" onClick={goToNext}>
             {/* <i className="fa fa-chevron-left"></i> */}
-          <span style={{ fontSize: '1.2rem', color: 'white' }}>&larr;</span>
+          <span style={{ fontSize: '1.2rem', color: 'white', marginTop:'-2px' }}>&larr;</span>
         </button>
         <button className="slider-button slider-next" onClick={goToPrevious}>
              {/* <i className="fa fa-chevron-right"></i> */}
-          <span style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
+          <span style={{ fontSize: '1.2rem', color: 'white', marginTop:'-2px' }}>&rarr;</span>
         </button>
       </div>
 
@@ -140,6 +142,8 @@ const ClientInsights = () => {
           </div>
         </div>
       )}
+    </div>
+    </div>
     </div>
   );
 };

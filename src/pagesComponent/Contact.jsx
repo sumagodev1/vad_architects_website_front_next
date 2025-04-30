@@ -357,7 +357,7 @@ const Contact = () => {
                         <div className="contact-item d-flex align-items-start mb-3">
                         <FaMapMarkerAlt className="contact-icon mt-1" />
                         <span className="contact-label">Address</span>
-                        <span className="contact-detail text-white text-justify">
+                        <span className="contact-detail text-white text-justify me-md-4">
                             602, Ganesh Gunjan Apartment, Lawate Nagar Lane No. 2,
                             Near City Centre Mall, Untwadi, Nashik 422007.
                         </span>

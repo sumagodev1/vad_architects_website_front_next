@@ -216,7 +216,7 @@ const Home = () => {
         <div className="container my-5 discover_container">
             <div className="row align-items-center section-bg-color">
                 {/* Left Text */}
-                <div className="col-md-6 mb-4 mb-md-0 p-4" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <div className="col-md-6 mb-4 mb-md-0 p-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                     <h2 className="fw-bold display-6">Discover</h2>
                     <h3 className="">Our Firm</h3>
                     <p className="text-secondary text-justify">
@@ -259,7 +259,7 @@ const Home = () => {
                 </div>
 
                 {/* Right Image */}
-                <div className="col-md-6 text-center pe-lg-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <div className="col-md-6 text-center pe-lg-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <img
                     src={post1}
                     alt="Discover Our Firm"
@@ -273,7 +273,7 @@ const Home = () => {
         <div className="container my-5" id="services">
             <div className="row g-4">
                 {/* Card 1 */}
-                <div className="col-md-4 text-center p-3 card_section_bg_color" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <div className="col-md-4 text-center p-3 card_section_bg_color" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <h5 className="fw-bold mb-2">INTERIOR DESIGN</h5>
                 <img src={card1} alt="Interior Design" className="img-fluid my-3 mb-3" />
                 <p className="small mb-3">
@@ -282,7 +282,7 @@ const Home = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div className="col-md-4 text-center bg-dark text-white p-3" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <div className="col-md-4 text-center bg-dark text-white p-3" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <h5 className="fw-bold mb-2">ARCHITECTURE</h5>
                 <img src={card2} alt="Architecture" className="img-fluid my-3 mb-3" />
                 <p className="small mb-3">
@@ -291,7 +291,7 @@ const Home = () => {
                 </div>
 
                 {/* Card 3 */}
-                <div className="col-md-4 text-center p-3 card_section_bg_color" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <div className="col-md-4 text-center p-3 card_section_bg_color" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <h5 className="fw-bold mb-2">LANDSCAPE</h5>
                 <img src={card3} alt="Landscape" className="img-fluid my-3 mb-3" />
                 <p className="small mb-3">
@@ -310,15 +310,15 @@ const Home = () => {
         <Ourprocess/>
 
         {/* Contact Section */}
-        <div className="container my-5">
+        <div className="container my-5 welcome-homepage-last">
             <div className="row align-items-center">
                 {/* Left Side - Images */}
-                <div className="col-md-6 position-relative text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <div className="col-md-6 position-relative text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <img src={WelcomeInquiries} alt="Main Interior" className="img-fluid rounded" />
                 </div>
 
                 {/* Right Side - Text */}
-                <div className="col-md-6 p-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+                <div className="col-md-6 p-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
                 <h1 className="fw-light welcome-home-below" style={{fontSize:'3.5rem'}}>We Welcome</h1>
                 <h1 className="fw-light welcome-home-below" style={{fontSize:'3.5rem'}}><span className="fw-bold">Your Inquiries.</span></h1>
                 <p className="mt-3 mb-0" style={{fontSize:'1.2rem'}}>Please Contact Us To Discuss Your Architectural Needs.</p>

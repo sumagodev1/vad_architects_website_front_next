@@ -51,11 +51,11 @@ const Project = () => {
 
   return (
     <div className="project-section container" id="projects">
-      <h1 className="project-title mb-3 mt-1 ms-md-3" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">Our Featured <strong>Projects</strong></h1>
-      <div className="row g-0">
+      <h1 className="project-title mb-4 mt-1 ms-md-3 set-home-page-projects-row light" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">Our Featured <strong>Projects</strong></h1>
+      <div className="row g-0 set-home-page-projects-row">
         {/* .slice(0, 2) */}
         {featuredProjects.map((project, idx) => (
-          <div className="col-12 col-md-6 mb-4" key={project.id} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="800">
+          <div className="col-12 col-md-6 mb-4 set-home-page-projects" key={project.id} data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
             <div className="project-card">
               <img
                 src={project.img}
@@ -85,7 +85,7 @@ const Project = () => {
                     }}
                     onClick={() => handleArrowClick(project)}
                   >
-                    <span className='circle-arrow-set' style={{ fontSize: '1.2rem', color: 'white' }}>&rarr;</span>
+                    <span className='circle-arrow-set' style={{ fontSize: '1.3rem', color: 'white' }}>&rarr;</span>
                   </div>
                 </div>
               </div>
