@@ -114,7 +114,7 @@ const Footer = () => {
 
           {/* Company Links */}
           <div className="col-md-2 col-lg-2 col-sm-3">
-            <h6 className="fw-bold mb-4">Company</h6>
+            <h6 className="fw-bold mb-4 footer-title">Company</h6>
             <ul className="list-unstyled">
               <li className="mb-2"><Link to="/" className="text-white text-decoration-none">Home</Link></li>
               <li className="mb-2"><Link to="/about" className="text-white text-decoration-none">Who We Are</Link></li>
@@ -129,7 +129,7 @@ const Footer = () => {
 
           {/* More Links */}
           <div className="col-md-2 col-lg-2 col-sm-3">
-            <h6 className="fw-bold mb-4">More</h6>
+            <h6 className="fw-bold mb-4 footer-title">More</h6>
             <ul className="list-unstyled">
               <li className="mb-2"><Link to="/#services" onClick={navigateToServicesSection} className="text-white text-decoration-none">Services</Link></li>
               <li className="mb-2"><Link to="/career" className="text-white text-decoration-none">Career</Link></li>
@@ -139,7 +139,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="col-lg-3 col-md-4 col-sm-6">
-            <h6 className="fw-bold mb-4">Contact us</h6>
+            <h6 className="fw-bold mb-4 footer-title">Contact us</h6>
             <div className="small mb-2 d-flex">
                 <FaMapMarkerAlt className="me-2" style={{ fontSize: '2rem', marginTop:'-0.2rem' }} />
                 <span className="text-justify">
@@ -164,7 +164,7 @@ const Footer = () => {
                 
             </div>
             <div className="col-lg-10 col-md-12 col-sm-12">
-                <hr className="my-4" style={{ borderColor: '#555' }} />
+                <hr className="my-4 footer-mobile-hr-line" style={{ borderColor: '#555' }} />
 
                 {/* Bottom Row */}
                 {/* <div className="d-md-flex justify-content-between align-items-center text-center text-md-start"> */}

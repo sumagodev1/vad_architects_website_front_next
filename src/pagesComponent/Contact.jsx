@@ -393,7 +393,7 @@ const Contact = () => {
         <div className="container contact-position" id="contactus">
             <div className="row justify-content-center mb-4 mt-4">
                 <div className="col-md-9 col-lg-9">
-                    <div className="card p-5 shadow-lg border-0 rounded-4">
+                    <div className="card p-4 p-md-5 shadow-lg border-0 rounded-4">
                     <div className="text-center mb-4">
                         <h2 className="mb-1">Let's Collaborate. <strong>Your Vision, Our Expertise.</strong></h2>
                         <p className="">Connect. Create. Build.</p>
