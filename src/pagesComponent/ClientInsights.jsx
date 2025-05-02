@@ -101,11 +101,13 @@ const ClientInsights = () => {
         </Slider>
         <button className="slider-button slider-prev" onClick={goToNext}>
             {/* <i className="fa fa-chevron-left"></i> */}
-          <span style={{ fontSize: '1.2rem', color: 'white', marginTop:'-2px', fontWeight:'300' }}>&larr;</span>
+          <span className='arrow-desktop' style={{ fontSize: '1.2rem', color: 'white', marginTop:'-2px', fontWeight:'300' }}>&larr;</span>
+          <span className="arrow-mobile">&lt;</span>
         </button>
         <button className="slider-button slider-next" onClick={goToPrevious}>
              {/* <i className="fa fa-chevron-right"></i> */}
-          <span style={{ fontSize: '1.2rem', color: 'white', marginTop:'-2px', fontWeight:'300' }}>&rarr;</span>
+          <span className='arrow-desktop' style={{ fontSize: '1.2rem', color: 'white', marginTop:'-2px', fontWeight:'300' }}>&rarr;</span>
+          <span className="arrow-mobile">&gt;</span>
         </button>
       </div>
 

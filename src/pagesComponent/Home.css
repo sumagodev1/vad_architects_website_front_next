@@ -31,6 +31,7 @@
     font-size: 1.2rem;
     color: white;
     margin-bottom: 0.2rem;
+    font-weight: 300;
 }
 
 @media (max-width: 765px) {
@@ -242,6 +243,41 @@
   
 
   /* testi */
+
+  /* Default: Desktop */
+.arrow-mobile {
+  display: none;
+}
+
+.arrow-desktop {
+  display: inline;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 300;
+  margin-top: -2px;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .arrow-desktop {
+    display: none;
+  }
+
+  .arrow-mobile {
+    display: inline;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 500;
+    margin-top: -2px;
+  }
+}
+
+@media (min-width: 389px) and (min-width: 390px) {
+  .arrow-mobile {
+    margin-top: 0px;
+  }
+}
+
 
   .client-insights-container {
     padding: 40px 20px;

@@ -121,6 +121,10 @@ const ArrowIcon = styled.div`
     top: -1px;  /* Move the arrow up within the circle */
     font-size: 1.4rem;
     font-weight: 300;
+
+    @media (min-width: 389px) and (max-width: 390px) {
+      top: -2px;
+    }
   }
 `;
 
