@@ -9,6 +9,7 @@ import ClientInsights from './ClientInsights';
 import Ourprocess from './Ourprocess';
 import axios from 'axios';
 import './Home.css';
+import newlogo from './images/newlogo.png'
 import post1 from './images/home/POST1.webp'
 import card1 from './images/home/Frame1.webp'
 import card2 from './images/home/Frame2.webp'
@@ -184,6 +185,10 @@ const Home = () => {
         <meta name="twitter:image" content={desktopVideo} />
         <meta name="twitter:site" content="@YourTwitterHandle" />
         <meta name="twitter:creator" content="@YourTwitterHandle" />
+
+        {desktopVideo && (
+          <link rel="preload" as="video" href={desktopVideo} type="video/mp4" />
+        )}
       </Helmet>
 
         <Navbar />
@@ -194,9 +199,9 @@ const Home = () => {
             {/* Desktop Video */}
             {desktopVideo && (
             <div className="d-none d-md-block career-banner-video-wrapper">
-                <video className="w-100 career-banner-video" autoPlay loop muted playsInline onLoadedData={handleVideoLoaded}>
+                <video className="w-100 career-banner-video" autoPlay loop muted playsInline onLoadedData={handleVideoLoaded} preload="auto" poster={newlogo}>
                 <source src={desktopVideo} type="video/mp4" />
-                {/* <source src="https://vadarchitects.com/13112233_3840_2160_60fps.mp4" type="video/mp4" /> */}
+                {/* <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" /> */}
                 Your browser does not support the video tag.
                 </video>
             </div>

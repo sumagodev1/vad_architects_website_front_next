@@ -40,6 +40,10 @@
   transform: scaleX(1);
 }
 
+.custom-dropdown-menu[data-bs-popper] {
+  left: 35px;
+}
+
 /* modify */
 
 @media (max-width: 767px) {
