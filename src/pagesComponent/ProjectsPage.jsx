@@ -328,6 +328,7 @@ const handleShowLess = () => {
                         project_location: project.project_location,
                         project_year_of_completion: project.project_year_of_completion,
                         project_name: project.project_name,
+                        project_info: project.project_info,
                         id: project.id,
                     },
                     })

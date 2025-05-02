@@ -60,7 +60,7 @@ const ProjectDetails = () => {
     const stateId = location.state?.id;
     console.log("stateId",stateId);
 
-    const { project_location, project_year_of_completion, project_name } = location.state || {};
+    const { project_location, project_year_of_completion, project_name, project_info } = location.state || {};
 
 useEffect(() => {
   const fetchProjectDetails = async () => {
@@ -266,7 +266,8 @@ useEffect(() => {
             {project_name?.split(" ").slice(2).join(" ")}
           </h1>
           <h4 className="fw-200">
-            Explore Our Most Recent Project, A Testament
+            {/* Explore Our Most Recent Project, A Testament */}
+            {project_info}
           </h4>
         </div>
 
@@ -295,16 +296,23 @@ useEffect(() => {
       {/* Rest of content remains unchanged */}
       <div className="row mb-5">
         <div className="col-12" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+        {project?.hero_img ? (
           <img
             src={`${axios.defaults.baseURL}${project?.hero_img}`}
             alt="Modern Kitchen"
             className="img-fluid rounded shadow-sm"
           />
+        ) : (
+          <div style={{ color: '#000', fontSize: '1.2rem', textAlign: 'center', padding: '20px' }}>
+            Image not uploaded
+          </div>
+        )}
         </div>
       </div>
 
       <div className="row align-items-center">
         <div className="col-md-8 order-2 order-md-1 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+        {project?.before_img ? (
           <img
             // src={space}
             // src={project?.before_img}
@@ -313,6 +321,11 @@ useEffect(() => {
             className="img-fluid rounded projectdetails_beforeimg"
             // shadow-sm
           />
+        ) : (
+          <div style={{ color: '#000', fontSize: '1.2rem', textAlign: 'center' }}>
+            The Space image is not uploaded
+          </div>
+        )}
         </div>
         <div className="col-md-4 order-1 order-md-2 p-md-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
           <h1 className="fw-100 project-details-title">
@@ -337,6 +350,7 @@ useEffect(() => {
             </div>
 
             <div className="col-md-8 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+              {project?.planning_img ? (
                 <img
                     // src={ask}
                     src={`${axios.defaults.baseURL}${project?.planning_img}`}
@@ -344,6 +358,11 @@ useEffect(() => {
                     className="img-fluid rounded projectdetails_askimg"
                     // shadow-sm
                 />
+              ) : (
+                <div style={{ color: '#000', fontSize: '1.2rem', textAlign: 'center' }}>
+                  The Planning image is not uploaded
+                </div>
+              )}
             </div>
         </div>
     </div>
