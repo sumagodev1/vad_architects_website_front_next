@@ -91,3 +91,9 @@
     width: 104px;
   }
 }
+
+@media (min-width: 1023px) and (max-width: 1024px) {
+  .footer-logo{
+    max-width: 14rem !important;
+  }
+}

@@ -108,6 +108,7 @@ const Footer = () => {
             <img
               src={footer_logo}
               alt="V.A.D. Architects Logo"
+              className="footer-logo"
               style={{ maxWidth: '15rem', marginBottom: '1rem' }}
             />
           </div>
