@@ -44,6 +44,13 @@
   left: 35px;
 }
 
+@media (min-width: 1919px) and (max-width: 1921px) {
+  .custom-dropdown-menu[data-bs-popper] {
+    left: 48px;
+  }
+  
+}
+
 /* modify */
 
 @media (max-width: 767px) {
