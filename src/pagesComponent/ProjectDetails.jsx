@@ -62,34 +62,62 @@ const ProjectDetails = () => {
 
     const { project_location, project_year_of_completion, project_name, project_info } = location.state || {};
 
+// useEffect(() => {
+//   const fetchProjectDetails = async () => {
+//     try {
+//       const response = await axios.get(`/projectDetailsWithImages/projects/${stateId}`);
+//       console.log("Full API Response:", response);
+//       const projectData = response.data;
+
+//       const formattedProject = {
+//         ...projectData,
+//         project_images: typeof projectData.project_images === "string"
+//           ? JSON.parse(projectData.project_images)
+//           : projectData.project_images,
+//       };
+
+//       // Only show if active
+//       if (!formattedProject.isDelete && !formattedProject.isActive) {
+//         setProject(formattedProject);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching project details:", error);
+//     }
+//   };
+
+//   if (projectId) {
+//     fetchProjectDetails();
+//   }
+  
+// }, [projectId]);
+
 useEffect(() => {
   const fetchProjectDetails = async () => {
     try {
       const response = await axios.get(`/projectDetailsWithImages/projects/${stateId}`);
-      console.log("Full API Response:", response);
-      const projectData = response.data;
+      const validProjects = response.data;
 
-      const formattedProject = {
-        ...projectData,
-        project_images: typeof projectData.project_images === "string"
-          ? JSON.parse(projectData.project_images)
-          : projectData.project_images,
-      };
-
-      // Only show if active
-      if (!formattedProject.isDelete && !formattedProject.isActive) {
-        setProject(formattedProject);
+      if (validProjects.length > 0) {
+        const project = {
+          ...validProjects[0],
+          project_images: typeof validProjects[0].project_images === "string"
+            ? JSON.parse(validProjects[0].project_images)
+            : validProjects[0].project_images,
+        };
+        setProject(project);
+      } else {
+        console.warn("No valid projects found for this ID.");
       }
     } catch (error) {
       console.error("Error fetching project details:", error);
     }
   };
 
-  if (projectId) {
+  if (stateId) {
     fetchProjectDetails();
   }
-  
-}, [projectId]);
+}, [stateId]);
+
 
 
     const [socialLinks, setSocialLinks] = useState({});

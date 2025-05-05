@@ -199,7 +199,7 @@ const ProjectsPage = () => {
               );
               const filteredProjects = response.data.responseData.filter(
                 (project) =>
-                  project.project_category_id === categoryId && project.isActive === true
+                  project.project_category_id === categoryId && project.isActive === true && project.isDelete !== true
               );
               setProjectsData(filteredProjects);
             } catch (error) {
