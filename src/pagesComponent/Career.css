@@ -118,6 +118,12 @@ text-align: justify;
 }
 
 
+@media (max-width: 901px) {
+  .career-banner-video-wrapper {
+    height: auto !important;
+  }
+}
+
 .career-banner-video-wrapper {
     width: 100%;
     height: 90vh;

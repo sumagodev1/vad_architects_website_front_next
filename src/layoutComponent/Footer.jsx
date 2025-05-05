@@ -150,8 +150,11 @@ const Footer = () => {
                 <div className="small d-flex align-items-center">
                 <FaPhoneAlt className="me-2" style={{ fontSize: '1rem' }} />
                 {/* <span>{contacts[0]?.phone1 || "+919984736470"}</span> */}
-                <a href={`tel:${contacts[0]?.phone2 || "213-814-2277"}`} className="text-white text-decoration-none">
+                <a href={`tel:${contacts[0]?.phone1 || "213-814-2277"}`} className="text-white text-decoration-none">
                     {contacts[0]?.phone1 || "213-814-2277"}
+                </a> &nbsp;/&nbsp;
+                <a href={`tel:${contacts[0]?.phone2 || "213-814-2277"}`} className="text-white text-decoration-none">
+                    {contacts[0]?.phone2 || "213-814-2277"}
                 </a>
             </div>
           </div>
