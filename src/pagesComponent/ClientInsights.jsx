@@ -50,6 +50,43 @@ const ClientInsights = () => {
   const goToNext = () => sliderRef.current?.slickNext();
   const goToPrevious = () => sliderRef.current?.slickPrev();
 
+  const renderTestimonialContent = (testimonial) => (
+    <div className="testimonial-content ms-md-5">
+      <div className="client-info">
+        <img src={testimonial.img || 'https://via.placeholder.com/80'} alt={testimonial.name} />
+        <div className="name-rating-container ms-md-3">
+          <div className="name-and-rating mb-3">
+            <div className="name-and-dash">
+              <span className="dash"></span>
+              <h3 className="client-name"><strong>{testimonial.name}</strong></h3>
+            </div>
+            <div className="rating">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span
+                  key={i}
+                  className={`star ${i < (testimonial.star || 0) ? '' : 'inactive-star'}`}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+          </div>
+          <p className="testimonial-text text-justify">
+            {testimonial.review.length > 180
+              ? `${testimonial.review.substring(0, 180)}... `
+              : testimonial.review}
+            {testimonial.review.length > 180 && (
+              <button className="read-more-btn" onClick={() => setSelectedTestimonial(testimonial)}>
+                Read More
+              </button>
+            )}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+  
+
   return (
     <div className='container'>
     <div className='row'>
@@ -59,6 +96,8 @@ const ClientInsights = () => {
         <h5 className='client-subtitle fw-300'>Hear What They Say!</h5>
       </div>
       <div className="client-insights-slider-wrapper container">
+      {testimonialData.length > 1 ? (
+    <>
         <Slider ref={sliderRef} {...settings} className="client-insights-slider">
           {testimonialData.map((testimonial, index) => (
             <div key={index} className="client-testimonial">
@@ -109,6 +148,14 @@ const ClientInsights = () => {
           <span className='arrow-desktop' style={{ fontSize: '1.2rem', color: 'white', marginTop:'-2px', fontWeight:'300' }}>&rarr;</span>
           <span className="arrow-mobile">&gt;</span>
         </button>
+        </>
+        ) : testimonialData.length === 1 ? (
+          <div className="client-testimonial single">
+            {renderTestimonialContent(testimonialData[0])}
+          </div>
+        ) : (
+          <p>No testimonials available.</p>
+        )}
       </div>
 
       {/* Modal */}
