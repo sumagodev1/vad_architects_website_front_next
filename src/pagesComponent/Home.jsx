@@ -154,7 +154,7 @@ const Home = () => {
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}
       >
-        <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
+        <video muted playsInline autoPlay loop preload="auto" style={{ maxWidth: '100%', maxHeight: '100%' }}>
           <source src={loaderVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -199,7 +199,7 @@ const Home = () => {
             {/* Desktop Video */}
             {desktopVideo && (
             <div className="d-none d-md-block career-banner-video-wrapper">
-                <video className="w-100 career-banner-video" autoPlay loop muted playsInline onLoadedData={handleVideoLoaded} preload="auto" poster={newlogo}>
+                <video className="w-100 career-banner-video" muted playsInline autoPlay loop preload="auto" poster={newlogo} onLoadedData={handleVideoLoaded} >
                 <source src={desktopVideo} type="video/mp4" />
                 {/* <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" /> */}
                 Your browser does not support the video tag.

@@ -9,7 +9,7 @@ import contactpage from './images/contactpage.webp';
 import './Contact.css';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-// import loaderVideo from './images/loader.mp4';
+import loaderVideo from './images/loader.mp4';
 import { FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaClock, FaFacebookF, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
 
 const Contact = () => {
@@ -262,10 +262,17 @@ const Contact = () => {
           .catch(() => setError("Failed to fetch contact info"));
     }, []);
 
-    // const handleVideoLoaded = () => {
-    //   setLoading(false);  // Stop the loader when the video is loaded
-    // }; 
+    const handleVideoLoaded = () => {
+      setLoading(false);  // Stop the loader when the video is loaded
+    }; 
       
+    useEffect(() => {
+      const timeout = setTimeout(() => {
+        setLoading(false);
+      }, 2000); // fallback after 5 seconds
+    
+      return () => clearTimeout(timeout);
+    }, []);
 
   return (
     <>
@@ -294,16 +301,40 @@ const Contact = () => {
 
       <Navbar />
 
+        {/* Show loader if video is still loading */}
+      {loading && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, width: '100vw', height: '100vh',
+            backgroundColor: '#fff', zIndex: 9999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}
+        >
+          <video muted playsInline autoPlay loop preload="auto" style={{ maxWidth: '100%', maxHeight: '100%' }}>
+            <source src={loaderVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+
       <div className="container-fluid px-0">
         <div className="row gx-0">
           <div className="col-12">
             <div className="career-banner-video-wrapper">
               <video
                 className="career-banner-video"
-                autoPlay
-                muted
-                loop
-                playsInline
+                muted 
+                playsInline 
+                autoPlay 
+                loop 
+                preload="auto"
+                onLoadedData={handleVideoLoaded}
+                style={{
+                  maxWidth: '100%', maxHeight: '100%',
+                  pointerEvents: 'none', // disables interaction
+                  userSelect: 'none', // disables text/image selection
+                }}
               >
                 <source src={banner} type="video/mp4" />
                 Your browser does not support the video tag.

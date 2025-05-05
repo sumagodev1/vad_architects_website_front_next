@@ -253,4 +253,12 @@
     width: 100%;
     height: 100%;
   }
+  .career-banner-video {
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
     

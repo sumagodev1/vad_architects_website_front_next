@@ -78,7 +78,7 @@ const About = () => {
       useEffect(() => {
         const timeout = setTimeout(() => {
           setLoading(false);
-        }, 5000); // fallback after 5 seconds
+        }, 2000); // fallback after 5 seconds
       
         return () => clearTimeout(timeout);
       }, []);
@@ -121,7 +121,7 @@ const About = () => {
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}
         >
-          <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
+          <video muted playsInline autoPlay loop preload="auto" style={{ maxWidth: '100%', maxHeight: '100%' }}>
             <source src={loaderVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -134,10 +134,11 @@ const About = () => {
             <div className="career-banner-video-wrapper">
               <video
                 className="career-banner-video"
-                autoPlay
-                muted
-                loop
-                playsInline
+                muted 
+                playsInline 
+                autoPlay 
+                loop 
+                preload="auto"
                 onLoadedData={handleVideoLoaded}
                 style={{
                   maxWidth: '100%', maxHeight: '100%',
