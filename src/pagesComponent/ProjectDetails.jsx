@@ -148,6 +148,28 @@ useEffect(() => {
 
     const scrollRef = useRef(null);
 
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+  
+    const startDragging = (e) => {
+      isDown = true;
+      startX = e.pageX || e.touches[0].pageX;
+      scrollLeft = scrollRef.current.scrollLeft;
+    };
+  
+    const stopDragging = () => {
+      isDown = false;
+    };
+  
+    const onDrag = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX || e.touches[0].pageX;
+      const walk = (x - startX) * 2; // Adjust speed if needed
+      scrollRef.current.scrollLeft = scrollLeft - walk;
+    };
+
     // useEffect(() => {
     //     // const lenis = new Lenis({ smooth: true });
       
@@ -422,6 +444,13 @@ useEffect(() => {
         <div
           ref={scrollRef}
           className="horizontal-gallery-wrapper"
+          onMouseDown={startDragging}
+          onMouseLeave={stopDragging}
+          onMouseUp={stopDragging}
+          onMouseMove={onDrag}
+          onTouchStart={startDragging}
+          onTouchEnd={stopDragging}
+          onTouchMove={onDrag}
           style={{
             whiteSpace: 'nowrap',
             paddingBottom: '1rem',

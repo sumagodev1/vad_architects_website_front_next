@@ -86,6 +86,8 @@
     display: flex;
     gap: 0px; /* Adds gap between images */
     padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch; 
+    touch-action: pan-x;
   }
   
   .gallery-item img {
