@@ -493,6 +493,7 @@ const Career = () => {
         <section className="social-media-section text-center">
             <h3 className="mb-3 fw-bold">Follow Us On</h3>
             <div className="d-flex justify-content-center gap-3">
+            {socialLinks.facebook && (
             <a
                 href={socialLinks.facebook}
                 className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle gallery_social_logo_shadow"
@@ -500,6 +501,9 @@ const Career = () => {
             >
                 <FaFacebookF style={{ height: "1.2rem", fill: "#444444" }} />
             </a>
+            )}
+
+            {socialLinks.instagram && (
             <a
                 href={socialLinks.instagram}
                 className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
@@ -507,6 +511,8 @@ const Career = () => {
             >
                 <FaInstagram style={{ height: "1.2rem", fill: "#444444" }} />
             </a>
+            )}
+
             {socialLinks.emailid && (
             <a
                 href={`mailto:${socialLinks.emailid}`}
@@ -525,10 +531,13 @@ const Career = () => {
                 <FaWhatsapp style={{ height: "1.2rem", fill: "#444444" }} />
             </a>
             )}
+
+            {socialLinks.linkedin && (
             <a href={socialLinks.linkedin} className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle shadow"
                 style={{ width: "45px", height: "45px", backgroundColor: '#fff' }} target="_blank" rel="noopener noreferrer" >
                 <FaLinkedin style={{ height: '1.2rem', fill: "#444444" }} />
             </a>
+            )}
             </div>
         </section>
         <section className="gallery_last_bg_color_sec p-4">
