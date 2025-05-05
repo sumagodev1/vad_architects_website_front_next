@@ -75,6 +75,15 @@ const About = () => {
         setLoading(false);  // Stop the loader when the video is loaded
       }; 
 
+      useEffect(() => {
+        const timeout = setTimeout(() => {
+          setLoading(false);
+        }, 5000); // fallback after 5 seconds
+      
+        return () => clearTimeout(timeout);
+      }, []);
+      
+
   return (
     <>
 
@@ -130,6 +139,11 @@ const About = () => {
                 loop
                 playsInline
                 onLoadedData={handleVideoLoaded}
+                style={{
+                  maxWidth: '100%', maxHeight: '100%',
+                  pointerEvents: 'none', // disables interaction
+                  userSelect: 'none', // disables text/image selection
+                }}
               >
                 <source src={banner} type="video/mp4" />
                 Your browser does not support the video tag.

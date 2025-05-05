@@ -238,3 +238,19 @@
     text-align: center;
   }
   
+
+  /* safari mac */
+
+  video {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: none;
+    user-select: none;
+    object-fit: cover;
+  }
+  .career-banner-video, .loader-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+    
