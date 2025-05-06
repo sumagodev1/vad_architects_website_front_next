@@ -20,6 +20,18 @@ const About = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
 
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (videoLoaded) {
+        setLoading(false);
+      }
+    }, 2000); // Minimum 3-second delay
+
+    return () => clearTimeout(timer);
+  }, [videoLoaded]);
+
     useEffect(() => {
       AOS.init({
         duration: 1000, // Animation duration in milliseconds
@@ -71,18 +83,9 @@ const About = () => {
     }, []);
 
     
-      const handleVideoLoaded = () => {
-        setLoading(false);  // Stop the loader when the video is loaded
-      }; 
-
-      useEffect(() => {
-        const timeout = setTimeout(() => {
-          setLoading(false);
-        }, 2000); // fallback after 5 seconds
-      
-        return () => clearTimeout(timeout);
-      }, []);
-      
+    const handleVideoLoaded = () => {
+      setVideoLoaded(true);
+    };
 
   return (
     <>
@@ -121,7 +124,7 @@ const About = () => {
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}
         >
-          <video muted playsInline autoPlay loop preload="auto" style={{ maxWidth: '100%', maxHeight: '100%' }}>
+          <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
             <source src={loaderVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -134,17 +137,11 @@ const About = () => {
             <div className="career-banner-video-wrapper">
               <video
                 className="career-banner-video"
-                muted 
-                playsInline 
-                autoPlay 
-                loop 
-                preload="auto"
+                autoPlay
+                muted
+                loop
+                playsInline
                 onLoadedData={handleVideoLoaded}
-                style={{
-                  maxWidth: '100%', maxHeight: '100%',
-                  pointerEvents: 'none', // disables interaction
-                  userSelect: 'none', // disables text/image selection
-                }}
               >
                 <source src={banner} type="video/mp4" />
                 Your browser does not support the video tag.

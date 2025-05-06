@@ -262,17 +262,20 @@ const Contact = () => {
           .catch(() => setError("Failed to fetch contact info"));
     }, []);
 
-    const handleVideoLoaded = () => {
-      setLoading(false);  // Stop the loader when the video is loaded
-    }; 
-      
+    // const handleVideoLoaded = () => {
+    //   setLoading(false);  // Stop the loader when the video is loaded
+    // }; 
     useEffect(() => {
-      const timeout = setTimeout(() => {
-        setLoading(false);
-      }, 2000); // fallback after 5 seconds
+      setLoading(true); // Start loader immediately on mount
     
-      return () => clearTimeout(timeout);
+      const timer = setTimeout(() => {
+        setLoading(false); // Ensure minimum of 3 seconds
+      }, 2000);
+    
+      return () => clearTimeout(timer); // Clean up on unmount
     }, []);
+    
+      
 
   return (
     <>
@@ -301,7 +304,6 @@ const Contact = () => {
 
       <Navbar />
 
-        {/* Show loader if video is still loading */}
       {loading && (
         <div
           style={{
@@ -311,7 +313,7 @@ const Contact = () => {
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}
         >
-          <video muted playsInline autoPlay loop preload="auto" style={{ maxWidth: '100%', maxHeight: '100%' }}>
+          <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
             <source src={loaderVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -324,17 +326,10 @@ const Contact = () => {
             <div className="career-banner-video-wrapper">
               <video
                 className="career-banner-video"
-                muted 
-                playsInline 
-                autoPlay 
-                loop 
-                preload="auto"
-                onLoadedData={handleVideoLoaded}
-                style={{
-                  maxWidth: '100%', maxHeight: '100%',
-                  pointerEvents: 'none', // disables interaction
-                  userSelect: 'none', // disables text/image selection
-                }}
+                autoPlay
+                muted
+                loop
+                playsInline
               >
                 <source src={banner} type="video/mp4" />
                 Your browser does not support the video tag.

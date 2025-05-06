@@ -85,15 +85,15 @@ const Home = () => {
         setHomeslider([...desktopSlides, ...mobileSlides]);
         // setLoading(false); 
               // Ensure minimum loader time of 3 seconds
-        // const elapsed = Date.now() - start;
-        // const remaining = MIN_LOADER_TIME - elapsed;
+        const elapsed = Date.now() - start;
+        const remaining = MIN_LOADER_TIME - elapsed;
 
-        // if (remaining > 0) {
-        //     setTimeout(() => setLoading(false), remaining);
-        // } else {
-        //     setLoading(false);
-        // }
-        setLoading(false);
+        if (remaining > 0) {
+            setTimeout(() => setLoading(false), remaining);
+        } else {
+            setLoading(false);
+        }
+        // setLoading(false);
       } catch (err) {
         console.error("There was an error fetching the data!", err);
         setHomeslider([]);
@@ -154,7 +154,7 @@ const Home = () => {
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}
       >
-        <video muted playsInline autoPlay loop preload="auto" style={{ maxWidth: '100%', maxHeight: '100%' }}>
+        <video autoPlay loop muted style={{ maxWidth: '100%', maxHeight: '100%' }}>
           <source src={loaderVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -199,7 +199,7 @@ const Home = () => {
             {/* Desktop Video */}
             {desktopVideo && (
             <div className="d-none d-md-block career-banner-video-wrapper">
-                <video className="w-100 career-banner-video" muted playsInline autoPlay loop preload="auto" poster={newlogo} onLoadedData={handleVideoLoaded} >
+                <video className="w-100 career-banner-video" autoPlay loop muted playsInline onLoadedData={handleVideoLoaded} preload="auto" poster={newlogo}>
                 <source src={desktopVideo} type="video/mp4" />
                 {/* <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" /> */}
                 Your browser does not support the video tag.

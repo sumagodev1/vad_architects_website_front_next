@@ -241,7 +241,7 @@
 
   /* safari mac */
 
-  video {
+  /* video {
     -webkit-appearance: none;
     appearance: none;
     object-fit: cover;
@@ -257,10 +257,8 @@
   }
   .career-banner-video {
     object-fit: cover;
-    /* pointer-events: none; */
-    /* user-select: none; */
     -webkit-appearance: none;
     appearance: none;
-  }
+  } */
   
     
