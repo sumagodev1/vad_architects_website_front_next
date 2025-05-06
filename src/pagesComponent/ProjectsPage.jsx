@@ -365,7 +365,7 @@ const handleShowLess = () => {
             {socialLinks.facebook && (
             <a
                 href={socialLinks.facebook}
-                className="text-dark me-2 d-flex align-items-center justify-content-center rounded-circle gallery_social_logo_shadow"
+                className="text-dark me-2 d-flex align-items-center shadow justify-content-center rounded-circle gallery_social_logo_shadow"
                 style={{ width: "45px", height: "45px", backgroundColor: "#fff" }}
             >
                 <FaFacebookF style={{ height: "1.2rem", fill: "#444444" }} />
